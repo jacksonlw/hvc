@@ -1,0 +1,6 @@
+# Reverse gitignore:
+# Exclude everything except specified files
+*
+!.gitignore
+!README.md
+!www/**
