@@ -1,35 +1,74 @@
+import Image from "next/image";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
+import { AboutUsSection } from "~/components/organisms";
+import { images } from "~/constants";
+
+const navLinks = [
+  {
+    name: "About Us",
+    href: "#about",
+  },
+  {
+    name: "Reservations",
+    href: "#reservations",
+  },
+  {
+    name: "Events",
+    href: "#events",
+  },
+  {
+    name: "Contact",
+    href: "#contact",
+  },
+];
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
+    <main className="container mx-auto min-h-dvh">
+      <div className="grid grid-cols-7 gap-6">
+        <div className="col-span-3">
+          <div className="flex min-h-dvh flex-col justify-center">
+            <h1 className="mb-2 text-5xl font-semibold text-gray-900">
+              Hill & Valley Club
+            </h1>
+            <p className="mb-24 text-xl text-gray-500">Hayward, CA</p>
+            <AboutUsSection />
+          </div>
+          <div className="h-[6000px]"></div>
+        </div>
+        <div className="col-span-4">
+          <div className="sticky top-0 flex min-h-dvh items-center">
+            <div className="flex grow items-center justify-center">
+              <Image
+                src={images.homeBackground}
+                width={1920}
+                height={1080}
+                alt="Portrait of Hayward, CA"
+                className="aspect-square w-3/4 rounded-full border-4 border-white object-cover object-top ring-4 ring-violet-600"
+              />
             </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
+            <div className="grid w-32 ">
+              {navLinks.map(({ name, href }, i) => (
+                <Link
+                  key={name}
+                  href={href}
+                  className={twMerge(
+                    "flex items-center justify-end py-2 text-lg text-gray-500 hover:text-gray-900",
+                    i === 0 && "text-violet-600 hover:text-violet-800",
+                  )}
+                >
+                  <div
+                    className={twMerge(
+                      "mr-2 hidden h-[2px] w-4 bg-current",
+                      i === 0 && "block",
+                    )}
+                  />
+                  {name}
+                </Link>
+              ))}
             </div>
-          </Link>
+          </div>
         </div>
       </div>
     </main>
