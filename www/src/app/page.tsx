@@ -1,27 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import { Button, Heading } from "~/components/atoms";
+import { ArrowDownIcon } from "~/components/icons";
+import { LocationIcon } from "~/components/icons/LocationIcon";
 import { AboutUsSection } from "~/components/organisms";
+import { Navigation } from "~/components/organisms/Navigation";
 import { images } from "~/constants";
-
-const navLinks = [
-  {
-    name: "About Us",
-    href: "#about",
-  },
-  {
-    name: "Reservations",
-    href: "#reservations",
-  },
-  {
-    name: "Events",
-    href: "#events",
-  },
-  {
-    name: "Contact",
-    href: "#contact",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -29,12 +12,23 @@ export default function HomePage() {
       <div className="grid grid-cols-7 gap-6">
         <div className="col-span-3">
           <div className="flex min-h-dvh flex-col justify-center">
-            <h1 className="mb-2 text-5xl font-semibold text-gray-900">
-              Hill & Valley Club
-            </h1>
-            <p className="mb-24 text-xl text-gray-500">Hayward, CA</p>
-            <AboutUsSection />
+            <Heading className="mb-4 text-5xl">Hill & Valley Club</Heading>
+            <p className="mb-8 text-xl text-gray-700">
+              Empowering women and enriching communities in Hayward, CA since
+              1910
+            </p>
+            <div className="flex gap-2">
+              <Button className="w-fit">
+                Reserve space for an event
+                <ArrowDownIcon className="ml-2" />
+              </Button>
+              <Button variant="outline">
+                <LocationIcon className="mr-2" />
+                1808 B Street, Hayward, CA 94541
+              </Button>
+            </div>
           </div>
+          <AboutUsSection />
           <div className="h-[6000px]"></div>
         </div>
         <div className="col-span-4">
@@ -49,24 +43,26 @@ export default function HomePage() {
               />
             </div>
             <div className="grid w-32 ">
-              {navLinks.map(({ name, href }, i) => (
-                <Link
-                  key={name}
-                  href={href}
-                  className={twMerge(
-                    "flex items-center justify-end py-2 text-lg text-gray-500 hover:text-gray-900",
-                    i === 0 && "text-violet-600 hover:text-violet-800",
-                  )}
-                >
-                  <div
-                    className={twMerge(
-                      "mr-2 hidden h-[2px] w-4 bg-current",
-                      i === 0 && "block",
-                    )}
-                  />
-                  {name}
-                </Link>
-              ))}
+              <Navigation
+                links={[
+                  {
+                    name: "About Us",
+                    href: "#about",
+                  },
+                  {
+                    name: "Reservations",
+                    href: "#reservations",
+                  },
+                  {
+                    name: "Events",
+                    href: "#events",
+                  },
+                  {
+                    name: "Contact",
+                    href: "#contact",
+                  },
+                ]}
+              />
             </div>
           </div>
         </div>

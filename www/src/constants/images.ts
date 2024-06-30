@@ -4,4 +4,4 @@ export const images = {
   homeBackground: `${IMAGE_URL}/home-bg.jpg`,
   clubhouse: `${IMAGE_URL}/clubhouse.jpg`,
   members: `${IMAGE_URL}/members.jpg`,
-} as const;
+} as const satisfies Record<string, string>;
