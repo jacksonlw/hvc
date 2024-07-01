@@ -1,12 +1,33 @@
-import { Badge } from "../atoms";
-import { ContentSection } from "../molecules";
+"use client";
+import { twMerge } from "tailwind-merge";
+import { SectionTitle } from "../../molecules/SectionTitle";
+import { SubSectionTitle } from "../../molecules/SubSectionTitle";
+import { useRef } from "react";
+import { useUpdateSectionOffset } from "~/hooks";
+import { SECTIONS } from "~/constants";
 
-export const AboutUsSection = () => {
+type AboutUsSectionProps = {
+  className?: string;
+};
+
+export const AboutUsSection = (props: AboutUsSectionProps) => {
+  const { className } = props;
+  const ref = useRef<HTMLDivElement>(null);
+  const id = SECTIONS.about.id;
+
+  useUpdateSectionOffset(id, ref);
+
   return (
-    <ContentSection
-      badgeTitle="About Us"
-      className="text-xl [&>p]:leading-relaxed"
+    <section
+      className={twMerge(
+        "relative flex min-h-dvh flex-col justify-center leading-relaxed [&>p]:mb-4",
+        className,
+      )}
+      ref={ref}
     >
+      <div className="absolute -top-16" id={id} />
+      <SectionTitle>About Us</SectionTitle>
+
       <p>
         The Hill & Valley Club is a non-profit organization that was formed in
         1910. We are a member of the General Federation of Women&apos;s Clubs
@@ -18,14 +39,7 @@ export const AboutUsSection = () => {
         the Chabot College graduating nurses.
       </p>
 
-      <p>
-        For more information about becoming a member call{" "}
-        <span className="break whitespace-nowrap break-keep font-medium text-violet-600">
-          (510) 421-0082
-        </span>
-      </p>
-
-      <Badge className="my-8">Our History</Badge>
+      <SubSectionTitle>History</SubSectionTitle>
 
       <p>
         Hill and Valley was established when Mrs. J. Allen Park brought together
@@ -61,6 +75,6 @@ export const AboutUsSection = () => {
         be started for a clubhouse. Building was postponed until 1952 because of
         WWII. The cottage was added in 1963.
       </p>
-    </ContentSection>
+    </section>
   );
 };

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
+export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 

@@ -13,8 +13,8 @@ const button = cva("", {
       solid: ["bg-violet-600", "hover:bg-violet-700", "text-white"],
       outline: [
         "bg-transparent",
-        "hover:bg-violet-600",
-        "hover:text-white",
+        "hover:bg-violet-600/[0.20]",
+        "hover:text-violet-700",
         "text-violet-600",
         "border",
         "border-b-2",
@@ -34,7 +34,7 @@ export const Button = (props: ButtonProps) => {
     <button
       className={twMerge(
         button({ variant }),
-        "flex items-center justify-center rounded-lg px-4 py-3 transition-colors duration-100",
+        "flex items-center justify-center rounded-lg px-4 py-2 transition-colors duration-100",
         className,
       )}
       {...rest}
