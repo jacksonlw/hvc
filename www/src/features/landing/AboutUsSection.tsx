@@ -1,10 +1,9 @@
 "use client";
 import { twMerge } from "tailwind-merge";
-import { SectionTitle } from "../../molecules/SectionTitle";
-import { SubSectionTitle } from "../../molecules/SubSectionTitle";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
 import { SECTIONS } from "~/constants";
+import { SectionTitle, SubSectionTitle } from "~/features/sections";
 
 type AboutUsSectionProps = {
   className?: string;
@@ -19,13 +18,10 @@ export const AboutUsSection = (props: AboutUsSectionProps) => {
 
   return (
     <section
-      className={twMerge(
-        "relative flex min-h-dvh flex-col justify-center leading-relaxed [&>p]:mb-4",
-        className,
-      )}
+      className={twMerge("relative leading-relaxed [&>p]:mb-4", className)}
       ref={ref}
     >
-      <div className="absolute -top-16" id={id} />
+      <div className="absolute -top-24" id={id} />
       <SectionTitle>About Us</SectionTitle>
 
       <p>

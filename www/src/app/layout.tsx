@@ -1,7 +1,7 @@
 import "~/styles.css";
 
 import { DM_Sans, Roboto_Slab } from "next/font/google";
-import { Navigation } from "~/components/organisms/Navigation";
+import { Navigation } from "~/features/navigation";
 import { Provider } from "jotai";
 import { SECTIONS } from "~/constants";
 
@@ -29,19 +29,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`font-sans ${dmSans.variable} ${robotoSlab.variable}`}
+      className={`bg-white font-sans ${dmSans.variable} ${robotoSlab.variable}`}
     >
       <body>
         <Provider>
-          <main className="px-40">{children}</main>
-          <div className="fixed right-0 top-0 flex h-dvh w-40 justify-center">
-            <Navigation
-              className="h-full"
-              sections={Object.keys(SECTIONS).map((key) => {
-                return SECTIONS[key as keyof typeof SECTIONS];
-              })}
-            />
-          </div>
+          <main className="container pt-16">{children}</main>
+          <Navigation
+            className="fixed left-0 top-0 h-16 w-full"
+            sections={Object.keys(SECTIONS).map((key) => {
+              return SECTIONS[key as keyof typeof SECTIONS];
+            })}
+          />
         </Provider>
       </body>
     </html>

@@ -3,8 +3,8 @@ import {
   AboutUsSection,
   EventsSection,
   LandingHeader,
-  ReserveSection,
-} from "~/components/organisms";
+  ReservationsSection,
+} from "~/features/landing";
 import { IMAGES } from "~/constants";
 
 export default function HomePage() {
@@ -13,9 +13,9 @@ export default function HomePage() {
       <div className="mb-16 grid grid-cols-2 gap-6">
         <div>
           <LandingHeader className="min-h-dvh" />
-          <AboutUsSection className="mb-16" />
+          <AboutUsSection className="mb-32" />
           <EventsSection
-            className="mb-16"
+            className="mb-32"
             events={[
               {
                 id: "1",
@@ -39,7 +39,7 @@ export default function HomePage() {
               },
             ]}
           />
-          <ReserveSection />
+          <ReservationsSection />
         </div>
         <div>
           <div className="sticky top-0 flex min-h-dvh items-center">

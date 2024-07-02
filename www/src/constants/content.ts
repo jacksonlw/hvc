@@ -26,3 +26,8 @@ export const IMAGES = {
   clubhouse: `${IMAGE_URL}/clubhouse.jpg`,
   members: `${IMAGE_URL}/members.jpg`,
 } as const satisfies Record<string, string>;
+
+export const PHONE_NUMBER = "(510) 881-9784";
+
+export const ADDRESS = "1808 B Street, Hayward, CA";
+export const ADDRESS_WITH_ZIP = `${ADDRESS} 94541`;

@@ -1,19 +1,17 @@
 "use client";
 import { twMerge } from "tailwind-merge";
-import { SectionTitle } from "../../molecules/SectionTitle";
-import { SubSectionTitle } from "../../molecules/SubSectionTitle";
-import { InfoCard } from "../../atoms";
-import Link from "next/link";
 import { PHONE_NUMBER, SECTIONS } from "~/constants";
-import { ReservationsFAQ } from "../../molecules/ReservationsFAQ";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
+import { SectionTitle, SubSectionTitle } from "~/features/sections";
+import { InfoCard, TextLink } from "~/components";
+import { ReservationsFAQ } from "./ReservationsFAQ";
 
-type ReserveSectionProps = {
+type ReservationsSectionProps = {
   className?: string;
 };
 
-export const ReserveSection = (props: ReserveSectionProps) => {
+export const ReservationsSection = (props: ReservationsSectionProps) => {
   const { className } = props;
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.reserve.id;
@@ -21,27 +19,15 @@ export const ReserveSection = (props: ReserveSectionProps) => {
   useUpdateSectionOffset(id, ref);
 
   return (
-    <section
-      className={twMerge(
-        "relative flex min-h-dvh flex-col justify-center [&>p]:mb-4",
-        className,
-      )}
-      ref={ref}
-    >
-      <div className="absolute -top-16" id={id} />
+    <section className={twMerge("relative [&>p]:mb-4", className)} ref={ref}>
+      <div className="absolute -top-24" id={id} />
       <SectionTitle>Reservations</SectionTitle>
       <InfoCard variant="important">
         <p>
           To make a reservation, you can call us at{" "}
           <span className="font-medium text-violet-600">{PHONE_NUMBER}</span> or
           contact us through our{" "}
-          <Link
-            href="#contact"
-            className="text-violet-600 underline hover:text-violet-500"
-          >
-            contact form below
-          </Link>
-          .
+          <TextLink href="#contact">contact form below</TextLink>.
         </p>
       </InfoCard>
 
@@ -56,26 +42,26 @@ export const ReserveSection = (props: ReserveSectionProps) => {
       <SubSectionTitle>Pricing</SubSectionTitle>
 
       <div className="mb-4 grid">
-        <div className="bg-gray-100 p-2 text-lg">All Day</div>
+        <div className="bg-slate-100 p-2 text-lg">All Day</div>
         <div className="flex items-center  p-2 pl-6">
-          <p className="grow text-gray-600">8:00am - 12:00am (Midnight)</p>
+          <p className="grow text-slate-500">8:00am - 12:00am (Midnight)</p>
           <p className="font-medium">$2000/day</p>
         </div>
-        <div className="bg-gray-100 p-2 text-lg">Hourly</div>
+        <div className="bg-slate-100 p-2 text-lg">Hourly</div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-gray-600">Sunday - Thursday</p>
+          <p className="grow text-slate-500">Sunday - Thursday</p>
           <p className="font-medium">$50/hr</p>
         </div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-gray-600">Friday</p>
+          <p className="grow text-slate-500">Friday</p>
           <p className="font-medium">$150/hr</p>
         </div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-gray-600">Saturday</p>
+          <p className="grow text-slate-500">Saturday</p>
           <p className="font-medium">$200/hr</p>
         </div>
       </div>
-      <InfoCard variant="info">
+      <InfoCard>
         Setup and cleanup time is included in your billable hours.
       </InfoCard>
 

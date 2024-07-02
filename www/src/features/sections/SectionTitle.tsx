@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { Heading, type HeadingProps } from "../atoms";
+import { Heading, type HeadingProps } from "~/components";
 
 export const SectionTitle = (props: HeadingProps) => {
   const { className, ...rest } = props;

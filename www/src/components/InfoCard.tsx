@@ -3,13 +3,13 @@ import {
   type BaseIconProps,
   InformationCircleIcon,
   ExclamationCircleIcon,
-} from "../icons";
+} from "~/icons";
 import { twMerge } from "tailwind-merge";
 
 type InfoCardVariant = "info" | "important";
 
 type InfoCardProps = {
-  variant: InfoCardVariant;
+  variant?: InfoCardVariant;
   className?: string;
   children?: React.ReactNode;
 };
@@ -17,7 +17,7 @@ type InfoCardProps = {
 const iconStyles = cva("", {
   variants: {
     variant: {
-      info: ["stroke-gray-500"],
+      info: ["stroke-slate-500"],
       important: ["stroke-violet-600"],
     },
   },
@@ -29,7 +29,7 @@ const iconStyles = cva("", {
 const containerStyles = cva("", {
   variants: {
     variant: {
-      info: ["border-gray-300"],
+      info: ["border-slate-300"],
       important: ["border-violet-600"],
     },
   },
@@ -47,13 +47,14 @@ const iconByVariant: Record<
 };
 
 export const InfoCard = (props: InfoCardProps) => {
-  const { variant, className, children } = props;
+  const { variant = "info", className, children } = props;
   const Icon = iconByVariant[variant];
   return (
     <div
       className={twMerge(
         containerStyles({ variant }),
         "flex items-center gap-3 rounded-lg border p-3",
+        className,
       )}
     >
       <div className="shirnk-0">

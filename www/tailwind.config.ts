@@ -1,39 +1,35 @@
-import colors from "tailwindcss/colors";
+import defaultTheme from "tailwindcss/defaultTheme";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import { type Config } from "tailwindcss/types/config";
 
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
+    container: {
+      center: true,
+      padding: "1rem",
+    },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
+      screens: {
+        ...defaultTheme.screens,
+        "3xl": "1700px",
+      },
       transitionDuration: {
+        ...defaultTheme.transitionDuration,
         DEFAULT: "100ms",
-        75: "75ms",
-        100: "100ms",
-        150: "150ms",
-        200: "200ms",
-        300: "300ms",
-        500: "500ms",
-        700: "700ms",
-        1000: "1000ms",
       },
       colors: {
-        gray: colors.gray,
-        blue: colors.blue,
-        green: colors.emerald,
-        red: colors.red,
-        orange: colors.orange,
-        yellow: colors.yellow,
-        violet: colors.violet,
+        ...defaultTheme.colors,
         black: "#0F0F10",
-        white: "#f2f2f2",
+        white: "#FDFDFD",
         transparent: "transparent",
       },
       animation: {
+        ...defaultTheme.animation,
         radixAccordionSlideDown: "radixAccordionSlideDown 200ms ease-out",
         radixAccordionSlideUp: "radixAccordionSlideUp 200ms ease-out",
       },

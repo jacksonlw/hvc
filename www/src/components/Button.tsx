@@ -13,7 +13,7 @@ const button = cva("", {
       solid: ["bg-violet-600", "hover:bg-violet-700", "text-white"],
       outline: [
         "bg-transparent",
-        "hover:bg-violet-600/[0.20]",
+        "hover:bg-violet-600/[0.15]",
         "hover:text-violet-700",
         "text-violet-600",
         "border",
