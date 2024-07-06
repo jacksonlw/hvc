@@ -13,7 +13,7 @@ export const LandingHeader = (props: LandingHeaderProps) => {
   return (
     <div className={twMerge("flex flex-col justify-center", className)}>
       <Heading className="mb-4 text-5xl">Hill & Valley Club</Heading>
-      <p className="mb-8 text-xl text-slate-700">
+      <p className="mb-8 text-xl text-gray-700">
         Empowering women and enriching communities since 1910
       </p>
       <div className="flex gap-2">

@@ -17,7 +17,7 @@ type InfoCardProps = {
 const iconStyles = cva("", {
   variants: {
     variant: {
-      info: ["stroke-slate-500"],
+      info: ["stroke-gray-500"],
       important: ["stroke-violet-600"],
     },
   },
@@ -29,7 +29,7 @@ const iconStyles = cva("", {
 const containerStyles = cva("", {
   variants: {
     variant: {
-      info: ["border-slate-300"],
+      info: ["border-gray-400"],
       important: ["border-violet-600"],
     },
   },

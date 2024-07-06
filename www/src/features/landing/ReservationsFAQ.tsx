@@ -22,7 +22,7 @@ export const ReservationsFAQ = (props: ReservationsFAQProps) => {
         return (
           <Accordion.Item
             key={item.question}
-            className="border-b border-slate-300 last:border-b-0"
+            className="border-b border-gray-300 last:border-b-0"
             value={item.question}
           >
             <Accordion.Header>
@@ -33,7 +33,7 @@ export const ReservationsFAQ = (props: ReservationsFAQProps) => {
             </Accordion.Header>
 
             <Accordion.Content className="select-none overflow-hidden data-[state=closed]:animate-radixAccordionSlideUp data-[state=open]:animate-radixAccordionSlideDown">
-              <div className="pb-3 text-slate-500">{answer}</div>
+              <div className="pb-3 text-gray-500">{answer}</div>
             </Accordion.Content>
           </Accordion.Item>
         );

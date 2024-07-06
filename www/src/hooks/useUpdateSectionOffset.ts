@@ -13,7 +13,7 @@ export const useUpdateSectionOffset = (
 
     setSectionOffsets((prev) => ({
       ...prev,
-      [sectionID]: offsetTop,
+      [sectionID]: offsetTop - 250,
     }));
   }, [sectionID, setSectionOffsets, sectionRef]);
 };

@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { PHONE_NUMBER, SECTIONS } from "~/constants";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
-import { SectionTitle, SubSectionTitle } from "~/features/sections";
+import { SectionTitle, SubSectionTitle } from "~/features/content";
 import { InfoCard, TextLink } from "~/components";
 import { ReservationsFAQ } from "./ReservationsFAQ";
 
@@ -25,9 +25,10 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
       <InfoCard variant="important">
         <p>
           To make a reservation, you can call us at{" "}
-          <span className="font-medium text-violet-600">{PHONE_NUMBER}</span> or
-          contact us through our{" "}
-          <TextLink href="#contact">contact form below</TextLink>.
+          <span className="text-violet-600">{PHONE_NUMBER}</span> or use our{" "}
+          <TextLink href={`/#${SECTIONS.contact.id}`}>
+            contact form below
+          </TextLink>
         </p>
       </InfoCard>
 
@@ -42,22 +43,22 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
       <SubSectionTitle>Pricing</SubSectionTitle>
 
       <div className="mb-4 grid">
-        <div className="bg-slate-100 p-2 text-lg">All Day</div>
+        <div className="bg-gray-100 p-2 text-lg">All Day</div>
         <div className="flex items-center  p-2 pl-6">
-          <p className="grow text-slate-500">8:00am - 12:00am (Midnight)</p>
+          <p className="grow text-gray-500">8:00am - 12:00am (Midnight)</p>
           <p className="font-medium">$2000/day</p>
         </div>
-        <div className="bg-slate-100 p-2 text-lg">Hourly</div>
+        <div className="bg-gray-100 p-2 text-lg">Hourly</div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-slate-500">Sunday - Thursday</p>
+          <p className="grow text-gray-500">Sunday - Thursday</p>
           <p className="font-medium">$50/hr</p>
         </div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-slate-500">Friday</p>
+          <p className="grow text-gray-500">Friday</p>
           <p className="font-medium">$150/hr</p>
         </div>
         <div className="flex items-center p-2 pl-6">
-          <p className="grow text-slate-500">Saturday</p>
+          <p className="grow text-gray-500">Saturday</p>
           <p className="font-medium">$200/hr</p>
         </div>
       </div>

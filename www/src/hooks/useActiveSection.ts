@@ -18,13 +18,12 @@ export const useActiveSection = () => {
       });
       offsetsArr.sort((a, b) => a.value - b.value);
       offsetsArr.forEach((o, i) => {
-        const buf = 150;
         const nextOffset = offsetsArr[i + 1];
-        if (i === 0 && y < o.value - buf) setActiveSectionID(null);
-        if (y > o.value - buf) {
+        if (i === 0 && y < o.value) setActiveSectionID(null);
+        if (y > o.value) {
           if (!nextOffset) {
             setActiveSectionID(o.id);
-          } else if (y < nextOffset.value - buf) {
+          } else if (y < nextOffset.value) {
             setActiveSectionID(o.id);
           }
         }

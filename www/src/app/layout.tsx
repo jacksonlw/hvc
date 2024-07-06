@@ -33,9 +33,8 @@ export default function RootLayout({
     >
       <body>
         <Provider>
-          <main className="container pt-16">{children}</main>
+          <main className="container pt-14">{children}</main>
           <Navigation
-            className="fixed left-0 top-0 h-16 w-full"
             sections={Object.keys(SECTIONS).map((key) => {
               return SECTIONS[key as keyof typeof SECTIONS];
             })}

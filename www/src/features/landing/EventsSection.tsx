@@ -10,7 +10,7 @@ import {
 } from "~/constants";
 import { useRef } from "react";
 import { CalendarIcon } from "~/icons";
-import { SectionTitle } from "~/features/sections";
+import { SectionTitle } from "~/features/content";
 import { Button, InfoCard, TextLink } from "~/components";
 
 type EventsSectionProps = {
@@ -40,7 +40,7 @@ export const EventsSection = (props: EventsSectionProps) => {
       </div>
 
       <div className="grid">
-        <div className="grid grid-cols-7 border-b border-slate-300 py-3 text-sm text-slate-500">
+        <div className="grid grid-cols-7 border-b border-gray-300 py-3 text-sm text-gray-500">
           <div className="col-span-3">Event Name</div>
           <div className="col-span-2">Date</div>
           <div className="col-span-2">Time</div>
@@ -53,7 +53,7 @@ export const EventsSection = (props: EventsSectionProps) => {
               key={event.id}
               href="/events/abc"
               className={twMerge(
-                "group grid grid-cols-7 border-b border-slate-300 py-4 hover:text-violet-600",
+                "group grid grid-cols-7 border-b border-gray-300 py-4 hover:text-violet-600",
                 isLast && "border-transparent",
               )}
             >

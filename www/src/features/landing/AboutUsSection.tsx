@@ -2,8 +2,9 @@
 import { twMerge } from "tailwind-merge";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
-import { SECTIONS } from "~/constants";
-import { SectionTitle, SubSectionTitle } from "~/features/sections";
+import { PHONE_NUMBER, SECTIONS } from "~/constants";
+import { SectionTitle, SubSectionTitle } from "~/features/content";
+import { InfoCard, TextLink } from "~/components";
 
 type AboutUsSectionProps = {
   className?: string;
@@ -34,6 +35,16 @@ export const AboutUsSection = (props: AboutUsSectionProps) => {
         as well as funding several scholarships for our local high schools and
         the Chabot College graduating nurses.
       </p>
+
+      <InfoCard variant="important">
+        <p>
+          Interseted in becoming a member? Call us at{" "}
+          <span className="text-violet-600">{PHONE_NUMBER}</span> or use our{" "}
+          <TextLink href={`/#${SECTIONS.contact.id}`}>
+            contact form below
+          </TextLink>
+        </p>
+      </InfoCard>
 
       <SubSectionTitle>History</SubSectionTitle>
 
