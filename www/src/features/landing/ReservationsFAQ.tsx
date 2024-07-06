@@ -16,7 +16,7 @@ export const ReservationsFAQ = (props: ReservationsFAQProps) => {
       defaultValue="item-1"
       collapsible
     >
-      {RESERVATIONS_FAQ.map((item, i) => {
+      {RESERVATIONS_FAQ.map((item) => {
         const { question, answer } = item;
 
         return (
@@ -26,14 +26,14 @@ export const ReservationsFAQ = (props: ReservationsFAQProps) => {
             value={item.question}
           >
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center py-3 text-start">
-                <p className="grow group-hover:text-violet-600">{question}</p>
+              <Accordion.Trigger className="group flex w-full items-center px-2 py-3 text-start hover:bg-violet-600/10">
+                <p className="grow">{question}</p>
                 <PlusIcon className="origin-center stroke-black transition-[transform] duration-200 group-hover:stroke-violet-600 group-data-[state=open]:rotate-45" />
               </Accordion.Trigger>
             </Accordion.Header>
 
-            <Accordion.Content className="select-none overflow-hidden data-[state=closed]:animate-radixAccordionSlideUp data-[state=open]:animate-radixAccordionSlideDown">
-              <div className="pb-3 text-gray-500">{answer}</div>
+            <Accordion.Content className="select-none overflow-hidden px-2 data-[state=closed]:animate-radixAccordionSlideUp data-[state=open]:animate-radixAccordionSlideDown">
+              <div className="py-3 text-gray-500">{answer}</div>
             </Accordion.Content>
           </Accordion.Item>
         );

@@ -1,6 +1,7 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import { fontFamily } from "tailwindcss/defaultTheme";
 import { type Config } from "tailwindcss/types/config";
+import colors from "tailwindcss/colors";
 
 export default {
   content: ["./src/**/*.tsx"],
@@ -14,16 +15,20 @@ export default {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
-      screens: {
-        ...defaultTheme.screens,
-        "3xl": "1700px",
+      spacing: {
+        ...defaultTheme.spacing,
+        navOffset: defaultTheme.spacing["14"],
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
         DEFAULT: "100ms",
       },
       colors: {
-        ...defaultTheme.colors,
+        ...colors,
+        violet: {
+          ...colors.violet,
+          25: "#f7f6fd",
+        },
         black: "#0F0F10",
         white: "#FDFDFD",
         transparent: "transparent",

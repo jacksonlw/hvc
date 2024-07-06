@@ -37,11 +37,11 @@ export const EventsSection = (props: EventsSectionProps) => {
           <CalendarIcon className="inline size-8" />
           Upcoming Events
         </SectionTitle>
-        <Button variant="outline">View All</Button>
+        <Button>View All</Button>
       </div>
 
       <div className="grid">
-        <div className="grid grid-cols-7 border-b border-gray-300 py-3 text-sm text-gray-500">
+        <div className="grid grid-cols-7 border-b border-gray-300 px-2 py-3 text-sm text-gray-500">
           <div className="col-span-3">Event Name</div>
           <div className="col-span-2">Date</div>
           <div className="col-span-2">Time</div>
@@ -57,11 +57,13 @@ export const EventsSection = (props: EventsSectionProps) => {
               key={id}
               href={`/events/${id}`}
               className={twMerge(
-                "group grid grid-cols-7 border-b border-gray-300 py-4 hover:text-violet-600",
+                "group grid grid-cols-7 border-b border-gray-300 px-2 py-4 hover:bg-violet-600/10",
                 isLast && "border-transparent",
               )}
             >
-              <p className="col-span-3 group-hover:underline">{name}</p>
+              <p className="col-span-3 text-lg group-hover:text-violet-600 group-hover:underline">
+                {name}
+              </p>
               <p className="col-span-2">{formattedDate}</p>
               <p className="col-span-2">{formattedTime}</p>
             </Link>

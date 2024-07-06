@@ -1,7 +1,7 @@
 import "~/styles.css";
 
 import { DM_Sans, Roboto_Slab } from "next/font/google";
-import { Navigation } from "~/features/navigation";
+import { Footer, Navigation } from "~/features/navigation";
 import { Provider } from "jotai";
 import { SECTIONS } from "~/constants";
 
@@ -33,12 +33,13 @@ export default function RootLayout({
     >
       <body>
         <Provider>
-          <main className="container pt-14">{children}</main>
+          <main className="pt-navOffset container">{children}</main>
           <Navigation
             sections={Object.keys(SECTIONS).map((key) => {
               return SECTIONS[key as keyof typeof SECTIONS];
             })}
           />
+          <Footer />
         </Provider>
       </body>
     </html>

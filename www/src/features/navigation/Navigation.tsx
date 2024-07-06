@@ -4,9 +4,8 @@ import { twMerge } from "tailwind-merge";
 import { type Section } from "~/types";
 import { useActiveSection } from "~/hooks";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Heading } from "~/components";
-import { usePathname } from "next/navigation";
 
 type NavigationProps = {
   sections: Section[];
@@ -18,39 +17,23 @@ export const Navigation = (props: NavigationProps) => {
   const activeSectionID = useActiveSection();
   const { scrollY } = useScroll();
   const [hasScrolled, setHasScrolled] = useState(scrollY.get() > 0);
-  const pathname = usePathname();
-  const [showLogo, setShowLogo] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setHasScrolled(y > 0);
   });
 
-  useEffect(() => {
-    setShowLogo(pathname === "/" ? hasScrolled : true);
-  }, [pathname, hasScrolled]);
-
   return (
     <nav
       className={twMerge(
-        "fixed left-0 top-0 z-10 h-14 w-full border-b border-white bg-white transition-[border-color,shadow]",
+        "h-navOffset fixed left-0 top-0 z-10 w-full border-b border-white bg-white transition-[border-color,shadow]",
         hasScrolled && "border-gray-300",
         className,
       )}
     >
       <div className="container flex h-full items-center gap-1">
-        <div
-          className={twMerge(
-            "h-full w-0 transition-[width] duration-200",
-            showLogo && "w-14",
-          )}
-        >
+        <div className={twMerge("h-full w-14 transition-[width] duration-200")}>
           <Link href="/#" className="group flex h-full items-center">
-            <Heading
-              className={twMerge(
-                "pointer-events-none -translate-x-4 opacity-0 transition-[color,opacity,transform] duration-200 group-hover:text-violet-600",
-                showLogo && "pointer-events-auto translate-x-0 opacity-100",
-              )}
-            >
+            <Heading className={twMerge("group-hover:text-violet-600")}>
               H&V
             </Heading>
           </Link>

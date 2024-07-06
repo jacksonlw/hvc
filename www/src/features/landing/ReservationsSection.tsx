@@ -21,7 +21,7 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
   return (
     <section className={twMerge("relative [&>p]:mb-4", className)} ref={ref}>
       <div className="absolute -top-24" id={id} />
-      <SectionTitle>Reservations</SectionTitle>
+      <SectionTitle>Reserve Our Hall</SectionTitle>
       <InfoCard variant="important">
         <p>
           To make a reservation, you can call us at{" "}

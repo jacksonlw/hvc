@@ -10,14 +10,17 @@ type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
 const button = cva("", {
   variants: {
     variant: {
-      solid: ["bg-violet-600", "hover:bg-violet-700", "text-white"],
+      solid: [
+        "bg-violet-600",
+        "hover:bg-violet-700",
+        "text-white",
+        "border-violet-800",
+      ],
       outline: [
         "bg-transparent",
         "hover:bg-violet-600/[0.15]",
         "hover:text-violet-700",
         "text-violet-600",
-        "border",
-        "border-b-2",
         "border-violet-600",
       ],
     },
@@ -33,8 +36,8 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       className={twMerge(
+        "flex items-center justify-center rounded-xl border border-b-2 px-4 py-2.5 transition-colors duration-100",
         button({ variant }),
-        "flex items-center justify-center rounded-lg px-4 py-2 transition-colors duration-100",
         className,
       )}
       {...rest}

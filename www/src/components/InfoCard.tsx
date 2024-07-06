@@ -29,8 +29,8 @@ const iconStyles = cva("", {
 const containerStyles = cva("", {
   variants: {
     variant: {
-      info: ["border-gray-400"],
-      important: ["border-violet-600"],
+      info: ["border-gray-400", "bg-gray-50"],
+      important: ["border-violet-600", "bg-violet-25"],
     },
   },
   defaultVariants: {
@@ -53,7 +53,7 @@ export const InfoCard = (props: InfoCardProps) => {
     <div
       className={twMerge(
         containerStyles({ variant }),
-        "flex items-center gap-3 rounded-lg border p-3",
+        "flex items-center gap-3 rounded-xl border p-3",
         className,
       )}
     >
