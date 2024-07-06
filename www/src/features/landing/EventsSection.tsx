@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { type Event } from "~/types";
 import { twMerge } from "tailwind-merge";
 import { useUpdateSectionOffset } from "~/hooks";
 import {
@@ -12,10 +11,12 @@ import { useRef } from "react";
 import { CalendarIcon } from "~/icons";
 import { SectionTitle } from "~/features/content";
 import { Button, InfoCard, TextLink } from "~/components";
+import { type CalendarEvent } from "~/types";
+import { formatDate, formatTimeRange } from "~/lib/datetime";
 
 type EventsSectionProps = {
   className?: string;
-  events: Event[];
+  events: CalendarEvent[];
 };
 
 export const EventsSection = (props: EventsSectionProps) => {
@@ -46,20 +47,23 @@ export const EventsSection = (props: EventsSectionProps) => {
           <div className="col-span-2">Time</div>
         </div>
         {events.map((event, i) => {
+          const { id, name, start, end } = event;
           const isLast = i === events.length - 1;
+          const formattedDate = formatDate(start.dateTime, end.dateTime);
+          const formattedTime = formatTimeRange(start.dateTime, end.dateTime);
 
           return (
             <Link
-              key={event.id}
-              href="/events/abc"
+              key={id}
+              href={`/events/${id}`}
               className={twMerge(
                 "group grid grid-cols-7 border-b border-gray-300 py-4 hover:text-violet-600",
                 isLast && "border-transparent",
               )}
             >
-              <p className="col-span-3 group-hover:underline">Bazaar</p>
-              <p className="col-span-2">Aug 8, 2024</p>
-              <p className="col-span-2">10:00pm - 3:00pm</p>
+              <p className="col-span-3 group-hover:underline">{name}</p>
+              <p className="col-span-2">{formattedDate}</p>
+              <p className="col-span-2">{formattedTime}</p>
             </Link>
           );
         })}

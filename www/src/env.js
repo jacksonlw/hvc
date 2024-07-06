@@ -8,6 +8,13 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    GOOGLE_API_KEY: z.string(),
+    GOOGLE_PROJECT_ID: z.string(),
+    GOOGLE_SERVICE_ACCOUNT_PK_ID: z.string(),
+    GOOGLE_SERVICE_ACCOUNT_PK: z.string(),
+    GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_EVENTS_CALENDAR_ID: z.string(),
   },
 
   /**
@@ -25,6 +32,13 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+    GOOGLE_PROJECT_ID: process.env.GOOGLE_PROJECT_ID,
+    GOOGLE_SERVICE_ACCOUNT_PK_ID: process.env.GOOGLE_SERVICE_ACCOUNT_PK_ID,
+    GOOGLE_SERVICE_ACCOUNT_PK: process.env.GOOGLE_SERVICE_ACCOUNT_PK,
+    GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_EVENTS_CALENDAR_ID: process.env.GOOGLE_EVENTS_CALENDAR_ID,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

@@ -1,8 +1,11 @@
-export type Event = {
+export type CalendarEvent = {
   id: string;
   name: string;
+  start: CalendarEventDateTime;
+  end: CalendarEventDateTime;
 };
 
-export type EventDateTime = {
-  date: string;
+export type CalendarEventDateTime = {
+  dateTime: Date;
+  timeZone: string;
 };

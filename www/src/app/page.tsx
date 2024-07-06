@@ -1,3 +1,4 @@
+import { env } from "~/env";
 import {
   AboutUsSection,
   EventsSection,
@@ -5,39 +6,18 @@ import {
   ReservationsSection,
   SupportingContent,
 } from "~/features/landing";
+import { readCalendar } from "~/lib/calendar";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const events = await readCalendar(env.GOOGLE_EVENTS_CALENDAR_ID);
+
   return (
     <>
       <div className="mb-16 grid grid-cols-2 gap-6">
         <div>
           <LandingHeader className="min-h-dvh pb-14" />
           <AboutUsSection className="mb-32" />
-          <EventsSection
-            className="mb-32"
-            events={[
-              {
-                id: "1",
-                name: "Test Event",
-              },
-              {
-                id: "2",
-                name: "Test Event",
-              },
-              {
-                id: "3",
-                name: "Test Event",
-              },
-              {
-                id: "4",
-                name: "Test Event",
-              },
-              {
-                id: "5",
-                name: "Test Event",
-              },
-            ]}
-          />
+          <EventsSection className="mb-32" events={events} />
           <ReservationsSection />
         </div>
         <div>
