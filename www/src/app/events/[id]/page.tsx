@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { Heading } from "~/components";
+import { Heading, TextLink } from "~/components";
+import { ADDRESS_WITH_ZIP, CLUBHOUSE_MAP_LOCATION_URL } from "~/constants";
 import { env } from "~/env";
 import { EmbedPDF } from "~/features/embed";
 import { BackButton } from "~/features/navigation";
@@ -34,11 +35,11 @@ export default async function EventPage(props: EventPageProps) {
   );
 
   return (
-    <div className="grid min-h-[calc(100dvh-theme(spacing.navOffset))] grid-cols-4">
-      <div className="sticky top-0 self-start pt-6">
+    <div className="grid min-h-[calc(100dvh-theme(spacing.navOffset))] grid-cols-4 gap-6">
+      <div className="top-navOffset sticky self-start py-6">
         <BackButton
           variant="outline"
-          className="-ml-3 mb-8 border-none text-black hover:bg-transparent hover:text-violet-600"
+          className="-ml-4 mb-8 border-none text-black hover:text-violet-600"
         >
           <ArrowLeftIcon className="mr-2 transition-[stroke]" />
           Go Back
@@ -57,16 +58,28 @@ export default async function EventPage(props: EventPageProps) {
             <p className="mb-1 text-sm text-gray-500">Time</p>
             <p>{formattedTimeRange}</p>
           </div>
+          <div>
+            <p className="mb-1 text-sm text-gray-500">Location</p>
+            <TextLink href={CLUBHOUSE_MAP_LOCATION_URL} target="_blank">
+              {ADDRESS_WITH_ZIP}
+            </TextLink>
+          </div>
         </div>
       </div>
-      {event.attachmentFileId ? (
-        <EmbedPDF
-          className="col-span-3 h-full py-6"
-          url={`https://drive.google.com/file/d/${event.attachmentFileId}/preview`}
-        />
-      ) : (
-        <></>
-      )}
+      <div className="col-span-3 py-6">
+        {event.attachmentFileId ? (
+          <EmbedPDF
+            className="h-full w-full"
+            url={`https://drive.google.com/file/d/${event.attachmentFileId}/preview`}
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center rounded-xl border border-gray-300 bg-gray-100">
+            <p className="font-heading text-xl text-gray-600">
+              No details provided for this event
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
