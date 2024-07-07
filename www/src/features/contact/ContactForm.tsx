@@ -26,7 +26,7 @@ export const ContactForm = (props: ContactFormProps) => {
   return (
     <div
       className={twMerge(
-        "grid max-w-[600px] gap-4 rounded-xl border border-gray-400 p-8",
+        "grid gap-4 rounded-xl border border-gray-400 p-8",
         className,
       )}
     >

@@ -5,18 +5,18 @@ import {
   LandingHeader,
   ReservationsSection,
 } from "~/features/landing";
-import { readCalendar } from "~/lib/calendar";
+import { listTenEvents } from "~/lib/calendar";
 import Image from "next/image";
 import { IMAGES } from "~/constants";
 import { ContactUsSection } from "~/features/landing/ContactSection";
 import { ContactForm } from "~/features/contact/ContactForm";
 
 export default async function HomePage() {
-  const events = await readCalendar(env.GOOGLE_EVENTS_CALENDAR_ID);
+  const events = await listTenEvents(env.GOOGLE_EVENTS_CALENDAR_ID);
 
   return (
     <>
-      <div className="mb-32 grid grid-cols-2 gap-x-12 gap-y-32">
+      <div className="pt-navOffset mb-16 grid grid-cols-2 gap-16">
         <LandingHeader className="pb-navOffset min-h-[calc(100dvh-theme(spacing.navOffset))]" />
         <div className="pb-navOffset flex items-center justify-end">
           <Image
@@ -48,9 +48,9 @@ export default async function HomePage() {
             className="aspect-video rounded-3xl border-4 border-white object-cover object-top"
           />
         </div>
-        <ContactUsSection className="min-h-[70dvh]" />
-        <div className="flex justify-end">
-          <ContactForm className="h-fit w-[90%]" />
+        <ContactUsSection className="min-h-dvh" />
+        <div className="flex">
+          <ContactForm className="h-fit w-full" />
         </div>
       </div>
     </>

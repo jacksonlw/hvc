@@ -3,6 +3,8 @@ export type CalendarEvent = {
   name: string;
   start: CalendarEventDateTime;
   end: CalendarEventDateTime;
+
+  attachmentFileId?: string;
 };
 
 export type CalendarEventDateTime = {

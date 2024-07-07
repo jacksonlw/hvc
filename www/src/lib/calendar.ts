@@ -1,19 +1,25 @@
 import { type calendar_v3, google } from "googleapis";
-import { env } from "~/env";
 import { type CalendarEvent } from "~/types";
+import { createGoogleAuth } from "./google";
 
-export const readCalendar = async (calendarId: string) => {
-  const auth = new google.auth.GoogleAuth({
-    scopes: ["https://www.googleapis.com/auth/calendar.events.readonly"],
-    credentials: {
-      type: "service account",
-      project_id: env.GOOGLE_PROJECT_ID,
-      private_key_id: env.GOOGLE_SERVICE_ACCOUNT_PK_ID,
-      private_key: env.GOOGLE_SERVICE_ACCOUNT_PK,
-      client_email: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-      client_id: env.GOOGLE_CLIENT_ID,
-    },
+export const getEvent = async (calendarId: string, eventId: string) => {
+  const auth = createGoogleAuth();
+
+  const cal = google.calendar({
+    version: "v3",
+    auth,
   });
+
+  const res = await cal.events.get({
+    calendarId,
+    eventId,
+  });
+
+  return convertResToEvent(res.data);
+};
+
+export const listTenEvents = async (calendarId: string) => {
+  const auth = createGoogleAuth();
 
   const cal = google.calendar({
     version: "v3",
@@ -29,36 +35,39 @@ export const readCalendar = async (calendarId: string) => {
   });
 
   const events = res.data.items
-    ?.map(convertEvent)
+    ?.map(convertResToEvent)
     .filter(Boolean) as CalendarEvent[];
 
   return events;
 };
 
-const convertEvent = (e: calendar_v3.Schema$Event) => {
+const convertResToEvent = (resEvent: calendar_v3.Schema$Event) => {
   if (
     !(
-      e.id &&
-      e.summary &&
-      e.start?.dateTime &&
-      e.end?.dateTime &&
-      e.start?.timeZone &&
-      e.end?.timeZone
+      resEvent.id &&
+      resEvent.summary &&
+      resEvent.start?.dateTime &&
+      resEvent.end?.dateTime &&
+      resEvent.start?.timeZone &&
+      resEvent.end?.timeZone
     )
   ) {
     return null;
   }
 
+  const firstAttachment = resEvent.attachments?.[0];
+
   return {
-    id: e.id,
-    name: e.summary,
+    id: resEvent.id,
+    name: resEvent.summary,
     start: {
-      dateTime: new Date(e.start?.dateTime),
-      timeZone: e.start?.timeZone,
+      dateTime: new Date(resEvent.start?.dateTime),
+      timeZone: resEvent.start?.timeZone,
     },
     end: {
-      dateTime: new Date(e.end?.dateTime),
-      timeZone: e.end?.timeZone,
+      dateTime: new Date(resEvent.end?.dateTime),
+      timeZone: resEvent.end?.timeZone,
     },
+    attachmentFileId: firstAttachment?.fileId,
   } as CalendarEvent;
 };

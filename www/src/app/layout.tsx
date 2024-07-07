@@ -33,12 +33,12 @@ export default function RootLayout({
     >
       <body>
         <Provider>
-          <main className="pt-navOffset container">{children}</main>
           <Navigation
             sections={Object.keys(SECTIONS).map((key) => {
               return SECTIONS[key as keyof typeof SECTIONS];
             })}
           />
+          <main className="pt-navOffset container min-h-dvh">{children}</main>
           <Footer />
         </Provider>
       </body>

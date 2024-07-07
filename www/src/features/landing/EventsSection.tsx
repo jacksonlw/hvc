@@ -57,7 +57,7 @@ export const EventsSection = (props: EventsSectionProps) => {
               key={id}
               href={`/events/${id}`}
               className={twMerge(
-                "group grid grid-cols-7 border-b border-gray-300 px-2 py-4 hover:bg-violet-600/10",
+                "group grid grid-cols-7 border-b border-gray-300 px-2 py-4 hover:bg-violet-100",
                 isLast && "border-transparent",
               )}
             >

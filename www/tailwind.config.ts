@@ -8,7 +8,13 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: {
+        DEFAULT: "2rem",
+        "2xl": "1rem",
+      },
+      screens: {
+        "2xl": "1536px",
+      },
     },
     extend: {
       fontFamily: {
@@ -22,6 +28,10 @@ export default {
       transitionDuration: {
         ...defaultTheme.transitionDuration,
         DEFAULT: "100ms",
+      },
+      maxWidth: {
+        ...defaultTheme.maxWidth,
+        "8xl": "1536px",
       },
       colors: {
         ...colors,

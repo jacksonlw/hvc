@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 
 type ButtonVariant = "solid" | "outline";
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
 };
 
@@ -18,7 +18,7 @@ const button = cva("", {
       ],
       outline: [
         "bg-transparent",
-        "hover:bg-violet-600/[0.15]",
+        "hover:bg-violet-100",
         "hover:text-violet-700",
         "text-violet-600",
         "border-violet-600",
@@ -36,7 +36,7 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       className={twMerge(
-        "flex items-center justify-center rounded-xl border border-b-2 px-4 py-2.5 transition-colors duration-100",
+        "flex items-center justify-center rounded-xl border border-b-2 px-4 py-2.5 font-medium transition-colors duration-100",
         button({ variant }),
         className,
       )}

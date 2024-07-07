@@ -26,7 +26,7 @@ export const ReservationsFAQ = (props: ReservationsFAQProps) => {
             value={item.question}
           >
             <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center px-2 py-3 text-start hover:bg-violet-600/10">
+              <Accordion.Trigger className="group flex w-full items-center px-2 py-3 text-start hover:bg-violet-100">
                 <p className="grow">{question}</p>
                 <PlusIcon className="origin-center stroke-black transition-[transform] duration-200 group-hover:stroke-violet-600 group-data-[state=open]:rotate-45" />
               </Accordion.Trigger>

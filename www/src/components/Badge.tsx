@@ -11,7 +11,7 @@ export const Badge = (props: BadgeProps) => {
   return (
     <span
       className={twMerge(
-        "inline-block rounded-lg bg-violet-100 p-2 text-sm font-semibold uppercase text-violet-600",
+        "inline-block rounded-lg bg-violet-100 p-2 text-sm font-medium uppercase text-violet-600",
         className,
       )}
     >
