@@ -7,7 +7,7 @@ export const SubSectionTitle = (props: HeadingProps) => {
   return (
     <Heading
       as="h3"
-      className={twMerge("mb-4 mt-8 text-2xl", className)}
+      className={twMerge("mb-4 mt-8 text-xl md:text-2xl", className)}
       {...rest}
     />
   );

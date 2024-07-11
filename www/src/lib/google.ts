@@ -3,7 +3,10 @@ import { env } from "~/env";
 
 export const createGoogleAuth = () => {
   return new google.auth.GoogleAuth({
-    scopes: ["https://www.googleapis.com/auth/calendar.events.readonly"],
+    scopes: [
+      "https://www.googleapis.com/auth/calendar.events.readonly",
+      "https://www.googleapis.com/auth/gmail.send",
+    ],
     credentials: {
       type: "service account",
       project_id: env.GOOGLE_PROJECT_ID,

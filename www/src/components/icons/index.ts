@@ -9,3 +9,8 @@ export * from "./BaseIcon";
 export * from "./ExclamationCircleIcon";
 export * from "./ChevronDownIcon";
 export * from "./PlusIcon";
+export * from "./XMarkIcon";
+export * from "./PaperAirplaneIcon";
+export * from "./ArrowLeftIcon";
+export * from "./CheckCircleIcon";
+export * from "./XCircleIcon";

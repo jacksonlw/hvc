@@ -6,7 +6,7 @@ import { PHONE_NUMBER, SECTIONS } from "~/constants";
 import { SectionTitle, SubSectionTitle } from "~/features/content";
 import { InfoCard, TextLink } from "~/components";
 import * as Accordion from "@radix-ui/react-accordion";
-import { PlusIcon } from "~/icons";
+import { PlusIcon } from "~/components/icons";
 
 type AboutUsSectionProps = {
   className?: string;

@@ -1,6 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import { twMerge } from "tailwind-merge";
-import { PlusIcon } from "~/icons";
+import { PlusIcon } from "~/components/icons";
 import { RESERVATIONS_FAQ } from "~/constants";
 
 type ReservationsFAQProps = {

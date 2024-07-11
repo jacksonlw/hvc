@@ -1,5 +1,4 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-import { fontFamily } from "tailwindcss/defaultTheme";
+import theme, { fontFamily } from "tailwindcss/defaultTheme";
 import { type Config } from "tailwindcss/types/config";
 import colors from "tailwindcss/colors";
 
@@ -8,12 +7,9 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: "2rem",
-        "2xl": "1rem",
-      },
       screens: {
-        "2xl": "1536px",
+        DEFAULT: "100%",
+        "2xl": theme.screens["2xl"],
       },
     },
     extend: {
@@ -22,15 +18,15 @@ export default {
         heading: ["var(--font-heading)", ...fontFamily.sans],
       },
       spacing: {
-        ...defaultTheme.spacing,
-        navOffset: defaultTheme.spacing["14"],
+        ...theme.spacing,
+        navOffset: theme.spacing["14"],
       },
       transitionDuration: {
-        ...defaultTheme.transitionDuration,
+        ...theme.transitionDuration,
         DEFAULT: "100ms",
       },
       maxWidth: {
-        ...defaultTheme.maxWidth,
+        ...theme.maxWidth,
         "8xl": "1536px",
       },
       colors: {
@@ -44,9 +40,10 @@ export default {
         transparent: "transparent",
       },
       animation: {
-        ...defaultTheme.animation,
+        ...theme.animation,
         radixAccordionSlideDown: "radixAccordionSlideDown 200ms ease-out",
         radixAccordionSlideUp: "radixAccordionSlideUp 200ms ease-out",
+        spinningLoader: "spinningLoader 500ms infinite linear",
       },
       keyframes: {
         radixAccordionSlideDown: {
@@ -63,6 +60,11 @@ export default {
           },
           to: {
             height: "0",
+          },
+        },
+        spinningLoader: {
+          to: {
+            transform: "rotate(360deg)",
           },
         },
       },

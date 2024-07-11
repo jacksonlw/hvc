@@ -1,13 +1,38 @@
 "use client";
-import { useId, useState } from "react";
+import { useCallback, useId, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { Button } from "~/components";
-import { Label } from "~/components/Label";
-import { TextField } from "~/components/TextField";
+import { Button, TextField, Label } from "~/components";
 import { SubSectionTitle } from "~/features/content";
+import { PaperAirplaneIcon, XCircleIcon } from "~/components/icons";
+import { sendMail } from "~/lib/mail";
+import { CheckCircleIcon } from "~/components/icons/CheckCircleIcon";
 
 type ContactFormProps = {
   className?: string;
+};
+
+const displayMessage = (isSuccess: boolean | null) => {
+  const commonClassName =
+    "grow outline-none flex items-center gap-2 font-medium";
+
+  switch (isSuccess) {
+    case true:
+      return (
+        <p className={twMerge(commonClassName, "text-green-600")}>
+          <CheckCircleIcon className="size-6" />
+          Successfully sent your message
+        </p>
+      );
+    case false:
+      return (
+        <p className={twMerge(commonClassName, "text-red-600")}>
+          <XCircleIcon className="size-6" />
+          Failed to send your message
+        </p>
+      );
+    default:
+      return <></>;
+  }
 };
 
 export const ContactForm = (props: ContactFormProps) => {
@@ -22,6 +47,30 @@ export const ContactForm = (props: ContactFormProps) => {
   const [emailValue, setEmailValue] = useState("");
   const [interestValue, setInterestValue] = useState("");
   const [messageValue, setMessageValue] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+
+  const handleSubmit = useCallback(async () => {
+    setIsLoading(true);
+    setIsSuccess(null);
+
+    const success = await sendMail(nameValue, emailValue, messageValue);
+
+    setIsLoading(false);
+    setIsSuccess(success);
+
+    if (success) {
+      resetValues();
+    }
+  }, [nameValue, emailValue, messageValue]);
+
+  const resetValues = () => {
+    setNameValue("");
+    setEmailValue("");
+    setInterestValue("");
+    setMessageValue("");
+  };
 
   return (
     <div
@@ -69,8 +118,18 @@ export const ContactForm = (props: ContactFormProps) => {
           placeholder="Enter your message"
         />
       </div>
-      <div className="mt-2 flex justify-end">
-        <Button>Send Message</Button>
+      <div className="mt-2 flex items-center">
+        <div className="grow">{displayMessage(isSuccess)}</div>
+
+        <Button
+          onClick={() => {
+            void handleSubmit();
+          }}
+          isLoading={isLoading}
+        >
+          <PaperAirplaneIcon className="mr-2 -rotate-45" />
+          Send Message
+        </Button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import {
   SECTIONS,
 } from "~/constants";
 import { useRef } from "react";
-import { CalendarIcon } from "~/icons";
+import { CalendarIcon } from "~/components/icons";
 import { SectionTitle } from "~/features/content";
 import { Button, InfoCard, TextLink } from "~/components";
 import { type CalendarEvent } from "~/types";
@@ -34,7 +34,7 @@ export const EventsSection = (props: EventsSectionProps) => {
       <div className="absolute -top-24" id={id} />
       <div className="mb-8 flex items-center">
         <SectionTitle className="m-0 flex grow items-center gap-2">
-          <CalendarIcon className="inline size-8" />
+          <CalendarIcon className="inline size-7 md:size-8" />
           Upcoming Events
         </SectionTitle>
         <Button>View All</Button>

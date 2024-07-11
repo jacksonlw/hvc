@@ -3,7 +3,7 @@ import {
   type BaseIconProps,
   InformationCircleIcon,
   ExclamationCircleIcon,
-} from "~/icons";
+} from "~/components/icons";
 import { twMerge } from "tailwind-merge";
 
 type InfoCardVariant = "info" | "important";

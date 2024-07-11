@@ -8,6 +8,6 @@ export const BackButton = (props: ButtonProps) => {
         window.history.back();
       }}
       {...props}
-    ></Button>
+    />
   );
 };

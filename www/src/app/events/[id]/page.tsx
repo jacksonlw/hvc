@@ -4,7 +4,7 @@ import { ADDRESS_WITH_ZIP, CLUBHOUSE_MAP_LOCATION_URL } from "~/constants";
 import { env } from "~/env";
 import { EmbedPDF } from "~/features/embed";
 import { BackButton } from "~/features/navigation";
-import { ArrowLeftIcon } from "~/icons/ArrowLeft";
+import { ArrowLeftIcon } from "~/components/icons";
 import { getEvent } from "~/lib/calendar";
 import { formatDate, formatTimeRange } from "~/lib/datetime";
 
@@ -36,7 +36,7 @@ export default async function EventPage(props: EventPageProps) {
 
   return (
     <div className="grid min-h-[calc(100dvh-theme(spacing.navOffset))] grid-cols-4 gap-6">
-      <div className="top-navOffset sticky self-start py-6">
+      <div className="sticky top-navOffset self-start py-6">
         <BackButton
           variant="outline"
           className="-ml-4 mb-8 border-none text-black hover:text-violet-600"
@@ -75,7 +75,7 @@ export default async function EventPage(props: EventPageProps) {
         ) : (
           <div className="flex h-full w-full items-center justify-center rounded-xl border border-gray-300 bg-gray-100">
             <p className="font-heading text-xl text-gray-600">
-              No details provided for this event
+              No additional details are provided for this event
             </p>
           </div>
         )}

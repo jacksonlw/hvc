@@ -15,9 +15,9 @@ export default async function HomePage() {
   const events = await listTenEvents(env.GOOGLE_EVENTS_CALENDAR_ID);
 
   return (
-    <div className="mb-16 grid grid-cols-2 gap-16">
+    <div className="mb-16 grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 xl:gap-x-16">
       <LandingHeader className="min-h-[calc(100dvh-theme(spacing.navOffset))] pb-navOffset" />
-      <div className="flex items-center justify-end pb-navOffset">
+      <div className="hidden items-center justify-end pb-navOffset lg:flex">
         <Image
           src={IMAGES.homeBackground}
           width={1920}
@@ -26,7 +26,7 @@ export default async function HomePage() {
           className="relative aspect-square rounded-full border-8 border-violet-200 object-cover object-top ring-8 ring-violet-500"
         />
       </div>
-      <AboutUsSection className="mb-32" />
+      <AboutUsSection />
       <div className="">
         <Image
           src={IMAGES.members}
@@ -36,18 +36,9 @@ export default async function HomePage() {
           className="aspect-video rounded-3xl border-4 border-white object-cover object-top"
         />
       </div>
-      <EventsSection className="col-span-full mb-32" events={events} />
-      <ReservationsSection />
-      <div className="">
-        <Image
-          src={IMAGES.clubhouse}
-          width={1920}
-          height={1080}
-          alt="Portrait of club members"
-          className="aspect-video rounded-3xl border-4 border-white object-cover object-top"
-        />
-      </div>
-      <ContactUsSection className="min-h-dvh" />
+      <EventsSection className="col-span-full" events={events} />
+      <ReservationsSection className="col-span-full" />
+      <ContactUsSection />
       <div className="flex">
         <ContactForm className="h-fit w-full" />
       </div>

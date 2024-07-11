@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { Button, Heading } from "~/components";
-import { CalendarIcon, LocationIcon } from "../../icons";
+import { CalendarIcon, LocationIcon } from "../../components/icons";
 import Link from "next/link";
 import { CLUBHOUSE_MAP_LOCATION_URL, SECTIONS } from "~/constants";
 
@@ -16,11 +16,11 @@ export const LandingHeader = (props: LandingHeaderProps) => {
       <p className="mb-8 text-xl text-gray-700">
         Empowering women and enriching communities since 1910
       </p>
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2 xl:flex-row">
         <Link href={`/#${SECTIONS.events.id}`}>
           <Button className="w-fit py-3">
             <CalendarIcon className="mr-2 size-6" />
-            See our upcoming events
+            Upcoming Events
           </Button>
         </Link>
 

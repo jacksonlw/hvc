@@ -15,6 +15,8 @@ export const env = createEnv({
     GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string(),
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_EVENTS_CALENDAR_ID: z.string(),
+    MAILJET_API_KEY: z.string(),
+    MAILJET_SECRET_KEY: z.string(),
   },
 
   /**
@@ -39,6 +41,8 @@ export const env = createEnv({
     GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_EVENTS_CALENDAR_ID: process.env.GOOGLE_EVENTS_CALENDAR_ID,
+    MAILJET_API_KEY: process.env.MAILJET_API_KEY,
+    MAILJET_SECRET_KEY: process.env.MAILJET_SECRET_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
