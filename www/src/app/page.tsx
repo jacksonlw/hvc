@@ -38,7 +38,7 @@ export default async function HomePage() {
       </div>
       <EventsSection className="col-span-full" events={events} />
       <ReservationsSection className="col-span-full" />
-      <ContactUsSection />
+      <ContactUsSection className="lg:min-h-[80dvh]" />
       <div className="flex">
         <ContactForm className="h-fit w-full" />
       </div>

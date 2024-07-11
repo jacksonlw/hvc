@@ -23,7 +23,7 @@ export const sendMail = async (
         Messages: [
           {
             From: {
-              Email: "no-reply@hillvalley.club",
+              Email: env.MAIL_FROM,
               Name: "Web Contact Form",
             },
             ReplyTo: {
@@ -32,8 +32,7 @@ export const sendMail = async (
             },
             To: [
               {
-                Email: "hillvalleyclub@gmail.com",
-                Name: "Hill & Valley Club",
+                Email: env.MAIL_TO,
               },
             ],
             Subject: "New Message From the Website",
