@@ -20,8 +20,8 @@ export const ContactForm = (props: ContactFormProps) => {
   const subjectId = useId();
   const messageId = useId();
 
-  const [nameValue, setNameValue] = useState("Jackson Lawrence ");
-  const [emailValue, setEmailValue] = useState("jlawrence1787@gmail.com");
+  const [nameValue, setNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
   const [subjectValue, setSubjectValue] = useState("");
   const [messageValue, setMessageValue] = useState("");
 
