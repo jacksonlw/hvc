@@ -64,7 +64,7 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
           <div className="bg-gray-100 p-2 text-lg">All Day</div>
           <div className="flex items-center  p-2 pl-6">
             <p className="grow text-gray-500">8:00am - 12:00am (Midnight)</p>
-            <p className="font-medium">$2000/day</p>
+            <p className="font-medium">$2000</p>
           </div>
           <div className="bg-gray-100 p-2 text-lg">Hourly</div>
           <div className="flex items-center p-2 pl-6">

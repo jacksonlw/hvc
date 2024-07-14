@@ -5,3 +5,4 @@ export * from "./InfoCard";
 export * from "./TextLink";
 export * from "./TextField";
 export * from "./Label";
+export * from "./Select";
