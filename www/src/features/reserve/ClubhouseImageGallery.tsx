@@ -93,7 +93,7 @@ export const ClubhouseImageGallery = (props: ClubhouseImageGalleryProps) => {
             >
               <div
                 className={twMerge(
-                  "size-3 rounded-full bg-gray-400 group-hover:bg-black",
+                  "size-3 rounded-full bg-gray-400",
                   i === activeIndex && "!bg-violet-600",
                 )}
               />
