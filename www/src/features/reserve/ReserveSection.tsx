@@ -1,18 +1,18 @@
 "use client";
 import { twMerge } from "tailwind-merge";
-import { IMAGES, PHONE_NUMBER, SECTIONS } from "~/constants";
+import { PHONE_NUMBER, SECTIONS } from "~/constants";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
 import { SectionTitle, SubSectionTitle } from "~/features/content";
 import { InfoCard, TextLink } from "~/components";
-import { ReservationsFAQ } from "./ReservationsFAQ";
-import Image from "next/image";
+import { ReserveFAQ } from "./ReserveFAQ";
+import { ClubhouseImageGallery } from "./ClubhouseImageGallery";
 
-type ReservationsSectionProps = {
+type ReserveSectionProps = {
   className?: string;
 };
 
-export const ReservationsSection = (props: ReservationsSectionProps) => {
+export const ReserveSection = (props: ReserveSectionProps) => {
   const { className } = props;
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.reserve.id;
@@ -28,8 +28,10 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
       ref={ref}
     >
       <div className="absolute -top-24" id={id} />
-      <div>
+      <div className="col-span-full">
         <SectionTitle>Reserve Our Hall</SectionTitle>
+      </div>
+      <div>
         <InfoCard variant="important">
           <p>
             To make a reservation, you can call us at{" "}
@@ -41,13 +43,7 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
         </InfoCard>
 
         <div className="mt-8 block lg:hidden">
-          <Image
-            src={IMAGES.clubhouse}
-            width={1920}
-            height={1080}
-            alt="Portrait of club members"
-            className="aspect-video rounded-3xl border-4 border-white object-cover object-top"
-          />
+          <ClubhouseImageGallery />
         </div>
 
         {/* <SubSectionTitle>Our Hall</SubSectionTitle>
@@ -85,16 +81,10 @@ export const ReservationsSection = (props: ReservationsSectionProps) => {
         </InfoCard>
 
         <SubSectionTitle>Frequently Asked Questions</SubSectionTitle>
-        <ReservationsFAQ />
+        <ReserveFAQ />
       </div>
       <div className="hidden lg:block">
-        <Image
-          src={IMAGES.clubhouse}
-          width={1920}
-          height={1080}
-          alt="Portrait of club members"
-          className="aspect-video rounded-3xl border-4 border-white object-cover object-top"
-        />
+        <ClubhouseImageGallery />
       </div>
     </section>
   );

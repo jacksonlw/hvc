@@ -3,11 +3,11 @@ import { twMerge } from "tailwind-merge";
 import { PlusIcon } from "~/components/icons";
 import { RESERVATIONS_FAQ } from "~/constants";
 
-type ReservationsFAQProps = {
+type ReserveFAQProps = {
   className?: string;
 };
 
-export const ReservationsFAQ = (props: ReservationsFAQProps) => {
+export const ReserveFAQ = (props: ReserveFAQProps) => {
   const { className } = props;
   return (
     <Accordion.Root

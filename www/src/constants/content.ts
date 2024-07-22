@@ -21,9 +21,11 @@ export const SECTIONS = {
 
 const IMAGE_URL = "https://hvc-website-assets.s3.us-west-1.amazonaws.com/img";
 
-export const IMAGES = {
+export const IMAGE_URLS = {
   homeBackground: `${IMAGE_URL}/home-bg.jpg`,
-  clubhouse: `${IMAGE_URL}/clubhouse.jpg`,
+  clubhouseOutsideFront: `${IMAGE_URL}/clubhouse-outside-front.jpg`,
+  clubhouseEntrance: `${IMAGE_URL}/clubhouse-entrance.jpg`,
+  clubhouseInside: `${IMAGE_URL}/clubhouse-inside.jpg`,
   members: `${IMAGE_URL}/members.jpg`,
 } as const satisfies Record<string, string>;
 

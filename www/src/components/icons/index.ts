@@ -14,3 +14,5 @@ export * from "./PaperAirplaneIcon";
 export * from "./ArrowLeftIcon";
 export * from "./CheckCircleIcon";
 export * from "./XCircleIcon";
+export * from "./ChevronLeftIcon";
+export * from "./ChevronRightIcon";

@@ -3,13 +3,12 @@ import {
   AboutUsSection,
   EventsSection,
   LandingHeader,
-  ReservationsSection,
 } from "~/features/landing";
 import { listTenEvents } from "~/lib/calendar";
 import Image from "next/image";
-import { IMAGES } from "~/constants";
-import { ContactUsSection } from "~/features/landing/ContactSection";
-import { ContactForm } from "~/features/contact/ContactForm";
+import { IMAGE_URLS } from "~/constants";
+import { ContactSection, ContactForm } from "~/features/contact";
+import { ReserveSection } from "~/features/reserve";
 
 export default async function HomePage() {
   const events = await listTenEvents(env.GOOGLE_EVENTS_CALENDAR_ID);
@@ -19,7 +18,7 @@ export default async function HomePage() {
       <LandingHeader className="min-h-[calc(100dvh-theme(spacing.navOffset))] pb-navOffset" />
       <div className="hidden items-center justify-end pb-navOffset lg:flex">
         <Image
-          src={IMAGES.homeBackground}
+          src={IMAGE_URLS.homeBackground}
           width={1920}
           height={1080}
           alt="Portrait of Hayward, CA"
@@ -29,7 +28,7 @@ export default async function HomePage() {
       <AboutUsSection />
       <div className="">
         <Image
-          src={IMAGES.members}
+          src={IMAGE_URLS.members}
           width={1920}
           height={1080}
           alt="Portrait of club members"
@@ -37,8 +36,8 @@ export default async function HomePage() {
         />
       </div>
       <EventsSection className="col-span-full" events={events} />
-      <ReservationsSection className="col-span-full" />
-      <ContactUsSection className="lg:min-h-[80dvh]" />
+      <ReserveSection className="col-span-full" />
+      <ContactSection className="lg:min-h-[80dvh]" />
       <div className="flex">
         <ContactForm className="h-fit w-full" />
       </div>
