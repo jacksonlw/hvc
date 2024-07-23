@@ -23,6 +23,7 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
           "group -mr-3 flex h-full items-center px-3",
           triggerClassName,
         )}
+        aria-label="Navigation Menu"
       >
         <Bars3Icon className="size-8 group-hover:text-violet-600 group-active:text-violet-400" />
       </Dialog.Trigger>

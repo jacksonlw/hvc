@@ -33,7 +33,11 @@ export const Navigation = (props: NavigationProps) => {
     >
       <div className="container flex h-full items-center gap-1">
         <div className={twMerge("h-full w-14 transition-[width] duration-200")}>
-          <Link href="/#" className="group flex h-full items-center">
+          <Link
+            href="/#"
+            className="group flex h-full items-center"
+            aria-label="Home"
+          >
             <Heading className={twMerge("group-hover:text-violet-600")}>
               H&V
             </Heading>
