@@ -28,7 +28,7 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay />
-        <Dialog.Content className="fixed left-0 top-0 z-20 h-dvh w-dvw bg-white">
+        <Dialog.Content className="fixed left-0 top-0 z-20 h-svh w-dvw bg-white">
           <div className="container flex h-navOffset items-center justify-end">
             <Dialog.Close className="group -mr-3 flex h-full items-center px-3">
               <XMarkIcon className="size-8 group-hover:text-violet-600 group-active:text-violet-600" />

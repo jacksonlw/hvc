@@ -15,7 +15,7 @@ export default async function HomePage() {
 
   return (
     <div className="mb-16 grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 xl:gap-x-16">
-      <LandingHeader className="min-h-[calc(100dvh-theme(spacing.navOffset))] pb-navOffset" />
+      <LandingHeader className="min-h-[calc(100svh-theme(spacing.navOffset))] pb-navOffset" />
       <div className="hidden items-center justify-end pb-navOffset lg:flex">
         <Image
           src={IMAGE_URLS.homeBackground}
@@ -37,7 +37,7 @@ export default async function HomePage() {
       </div>
       <EventsSection className="col-span-full" events={events} />
       <ReserveSection className="col-span-full" />
-      <ContactSection className="lg:min-h-[80dvh]" />
+      <ContactSection className="lg:min-h-[80svh]" />
       <div className="flex">
         <ContactForm className="h-fit w-full" />
       </div>

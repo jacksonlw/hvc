@@ -35,7 +35,7 @@ export default async function EventPage(props: EventPageProps) {
   );
 
   return (
-    <div className="grid min-h-[calc(100dvh-theme(spacing.navOffset))] grid-cols-4 gap-6">
+    <div className="grid min-h-[calc(100svh-theme(spacing.navOffset))] grid-cols-4 gap-6">
       <div className="sticky top-navOffset self-start py-6">
         <BackButton
           variant="outline"

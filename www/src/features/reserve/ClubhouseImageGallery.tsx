@@ -35,7 +35,7 @@ const GalleryNavigationButton = (props: GalleryNavigationButtonProps) => {
     >
       <Icon
         className={twMerge(
-          "size-7 group-hover:text-violet-600",
+          "size-6 group-hover:text-violet-600",
           textPosition === "left" && "order-2",
         )}
       />

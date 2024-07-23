@@ -38,7 +38,7 @@ export default function RootLayout({
               return SECTIONS[key as keyof typeof SECTIONS];
             })}
           />
-          <main className="container min-h-dvh pt-navOffset">{children}</main>
+          <main className="container min-h-svh pt-navOffset">{children}</main>
           <Footer />
         </Provider>
       </body>
