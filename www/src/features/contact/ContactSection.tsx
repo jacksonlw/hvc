@@ -21,7 +21,7 @@ export const ContactSection = (props: ContactSectionProps) => {
   return (
     <section
       className={twMerge(
-        "relative grid grid-cols-1 gap-x-8 leading-relaxed lg:grid-cols-2 xl:gap-x-16 [&>p]:mb-4",
+        "relative grid grid-cols-1 gap-x-8 leading-relaxed lg:grid-cols-2 xl:gap-x-16",
         className,
       )}
       ref={ref}
@@ -31,7 +31,7 @@ export const ContactSection = (props: ContactSectionProps) => {
         <SectionTitle>Contact Us</SectionTitle>
       </div>
 
-      <div className="mb-8 lg:mb-0">
+      <div className="mb-8 lg:mb-0 [&>p]:mb-4">
         <p>
           Contact us regarding any questions about becoming a member, reserving
           our hall, or any other inquiries you may have.
