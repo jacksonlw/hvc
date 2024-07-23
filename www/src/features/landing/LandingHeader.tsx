@@ -12,11 +12,13 @@ export const LandingHeader = (props: LandingHeaderProps) => {
   const { className } = props;
   return (
     <div className={twMerge("flex flex-col justify-center", className)}>
-      <Heading className="mb-4 text-5xl">Hill & Valley Club</Heading>
-      <p className="mb-8 text-xl text-gray-700">
+      <Heading className="mb-4 text-4xl md:text-5xl">
+        Hill & Valley Club
+      </Heading>
+      <p className="mb-8 text-lg text-gray-700 md:text-xl">
         Empowering women and enriching communities since 1910
       </p>
-      <div className="flex flex-col gap-2 xl:flex-row">
+      <div className="flex flex-row flex-wrap gap-2">
         <Link href={`/#${SECTIONS.events.id}`}>
           <Button className="w-fit py-3">
             <CalendarIcon className="mr-2 size-6" />

@@ -24,14 +24,14 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
           triggerClassName,
         )}
       >
-        <Bars3Icon className="size-8 group-hover:text-violet-600 group-active:text-violet-600" />
+        <Bars3Icon className="size-8 group-hover:text-violet-600 group-active:text-violet-400" />
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay />
         <Dialog.Content className="fixed left-0 top-0 z-20 h-svh w-dvw bg-white">
           <div className="container flex h-navOffset items-center justify-end">
             <Dialog.Close className="group -mr-3 flex h-full items-center px-3">
-              <XMarkIcon className="size-8 group-hover:text-violet-600 group-active:text-violet-600" />
+              <XMarkIcon className="size-8 group-hover:text-violet-600 group-active:text-violet-400" />
             </Dialog.Close>
           </div>
           <div className="container flex flex-col items-end gap-2">
@@ -39,7 +39,7 @@ export const NavigationMenu = (props: NavigationMenuProps) => {
               <Link
                 key={section.id}
                 href={`/#${section.id}`}
-                className="block py-3 font-heading text-2xl"
+                className="block py-3 font-heading text-2xl hover:text-violet-600 active:text-violet-400"
                 onClick={() => setOpen(false)}
               >
                 {section.title}

@@ -12,7 +12,7 @@ export const TextLink = (props: TextLinkProps) => {
   return (
     <Link
       className={twMerge(
-        "text-violet-600 underline hover:text-violet-500",
+        "text-violet-600 underline hover:text-violet-500 active:text-violet-400",
         className,
       )}
       {...rest}

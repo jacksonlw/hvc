@@ -1,6 +1,6 @@
 "use client";
 import { twMerge } from "tailwind-merge";
-import { PHONE_NUMBER, SECTIONS } from "~/constants";
+import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
 import { SectionTitle, SubSectionTitle } from "~/features/content";
@@ -35,7 +35,10 @@ export const ReserveSection = (props: ReserveSectionProps) => {
         <InfoCard variant="important">
           <p>
             To make a reservation, you can call us at{" "}
-            <span className="text-violet-600">{PHONE_NUMBER}</span> or use our{" "}
+            <TextLink href={PHONE_NUMBER_LINK} className="text-violet-600">
+              {PHONE_NUMBER}
+            </TextLink>{" "}
+            or use our{" "}
             <TextLink href={`/#${SECTIONS.contact.id}`}>
               contact form below
             </TextLink>

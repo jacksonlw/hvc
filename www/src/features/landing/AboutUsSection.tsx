@@ -2,7 +2,7 @@
 import { twMerge } from "tailwind-merge";
 import { useRef } from "react";
 import { useUpdateSectionOffset } from "~/hooks";
-import { PHONE_NUMBER, SECTIONS } from "~/constants";
+import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
 import { SectionTitle, SubSectionTitle } from "~/features/content";
 import { InfoCard, TextLink } from "~/components";
 import * as Accordion from "@radix-ui/react-accordion";
@@ -41,7 +41,8 @@ export const AboutUsSection = (props: AboutUsSectionProps) => {
       <InfoCard variant="important">
         <p>
           Interseted in becoming a member? Call us at{" "}
-          <span className="text-violet-600">{PHONE_NUMBER}</span> or use our{" "}
+          <TextLink href={PHONE_NUMBER_LINK}>{PHONE_NUMBER}</TextLink> or use
+          our{" "}
           <TextLink href={`/#${SECTIONS.contact.id}`}>
             contact form below
           </TextLink>

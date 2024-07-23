@@ -28,18 +28,15 @@ const GalleryNavigationButton = (props: GalleryNavigationButtonProps) => {
   return (
     <button
       className={twMerge(
-        "group flex items-center justify-center gap-1 p-2 font-medium",
+        "group flex items-center justify-center gap-1 p-2 font-medium hover:text-violet-600 active:text-violet-500",
         className,
       )}
       {...rest}
     >
       <Icon
-        className={twMerge(
-          "size-6 group-hover:text-violet-600",
-          textPosition === "left" && "order-2",
-        )}
+        className={twMerge("size-6", textPosition === "left" && "order-2")}
       />
-      <p className={twMerge("group-hover:text-violet-600")}>{children}</p>
+      <p>{children}</p>
     </button>
   );
 };
@@ -89,11 +86,11 @@ export const ClubhouseImageGallery = (props: ClubhouseImageGalleryProps) => {
             <button
               key={image}
               onClick={() => setActiveIndex(i)}
-              className={twMerge("group px-1.5 py-2")}
+              className={twMerge("group px-2 py-3")}
             >
               <div
                 className={twMerge(
-                  "size-3 rounded-full bg-gray-400",
+                  "size-2 rounded-full bg-gray-400 group-hover:bg-gray-600 group-active:bg-gray-600 sm:size-2.5",
                   i === activeIndex && "!bg-violet-600",
                 )}
               />

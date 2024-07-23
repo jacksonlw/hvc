@@ -24,12 +24,20 @@ const button = cva("", {
     {
       variant: "solid",
       isLoading: false,
-      className: ["hover:bg-violet-700", "hover:border-violet-700"],
+      className: [
+        "hover:bg-violet-700",
+        "hover:border-violet-700",
+        "active:bg-violet-500",
+      ],
     },
     {
       variant: "outline",
       isLoading: false,
-      className: ["hover:bg-violet-100", "hover:border-violet-600"],
+      className: [
+        "hover:bg-violet-100",
+        "hover:border-violet-600",
+        "active:bg-violet-200",
+      ],
     },
   ],
   defaultVariants: {

@@ -88,7 +88,7 @@ export const ContactForm = (props: ContactFormProps) => {
       }}
       noValidate
     >
-      <SubSectionTitle className="my-0 mb-2 text-xl">
+      <SubSectionTitle className="my-0 mb-2 hidden text-xl lg:block">
         Send Us a Message
       </SubSectionTitle>
       <div>
@@ -139,16 +139,9 @@ export const ContactForm = (props: ContactFormProps) => {
           placeholder="Enter your message"
         />
       </div>
-      <div className="mt-2 flex items-center">
-        <div className="grow">
-          {isSuccess !== null ? (
-            <ContactStatusMessage
-              isSuccess={isSuccess}
-              message={statusMessage}
-            />
-          ) : (
-            <></>
-          )}
+      <div className="mt-2 flex flex-col-reverse items-end gap-2 lg:flex-row lg:items-center">
+        <div className={twMerge("grow", isSuccess === null && "opacity-0")}>
+          <ContactStatusMessage isSuccess={isSuccess} message={statusMessage} />
         </div>
         <Button isLoading={isLoading}>
           <PaperAirplaneIcon className="mr-2 -rotate-45" />

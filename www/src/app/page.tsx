@@ -7,7 +7,7 @@ import {
 import { listTenEvents } from "~/lib/calendar";
 import Image from "next/image";
 import { IMAGE_URLS } from "~/constants";
-import { ContactSection, ContactForm } from "~/features/contact";
+import { ContactSection } from "~/features/contact";
 import { ReserveSection } from "~/features/reserve";
 
 export default async function HomePage() {
@@ -37,10 +37,7 @@ export default async function HomePage() {
       </div>
       <EventsSection className="col-span-full" events={events} />
       <ReserveSection className="col-span-full" />
-      <ContactSection className="lg:min-h-[80svh]" />
-      <div className="flex">
-        <ContactForm className="h-fit w-full" />
-      </div>
+      <ContactSection className="col-span-full lg:min-h-[80svh]" />
     </div>
   );
 }

@@ -61,11 +61,11 @@ export const EventsSection = (props: EventsSectionProps) => {
                 isLast && "border-transparent",
               )}
             >
-              <p className="col-span-3 text-lg group-hover:text-violet-600 group-hover:underline">
+              <p className="col-span-3 font-medium group-hover:text-violet-600 group-hover:underline md:text-lg">
                 {name}
               </p>
-              <p className="col-span-2">{formattedDate}</p>
-              <p className="col-span-2">{formattedTime}</p>
+              <p className="col-span-2 text-sm sm:text-base">{formattedDate}</p>
+              <p className="col-span-2 text-sm sm:text-base">{formattedTime}</p>
             </Link>
           );
         })}
