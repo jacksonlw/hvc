@@ -24,7 +24,7 @@ export const ContactStatusMessage = (props: ContactStatusMessageProps) => {
   return (
     <p
       className={twMerge(
-        "flex grow items-center gap-2 font-medium outline-none",
+        "flex h-7 grow items-center gap-2 font-medium outline-none",
         messageStyle({ isSuccess }),
       )}
     >

@@ -74,12 +74,19 @@ export const ContactForm = (props: ContactFormProps) => {
     if (res.success) {
       resetValues();
     }
-  }, [resetValues, nameValue, subjectValue, emailValue, messageValue]);
+  }, [
+    validateValues,
+    nameValue,
+    subjectValue,
+    emailValue,
+    messageValue,
+    resetValues,
+  ]);
 
   return (
     <form
       className={twMerge(
-        "grid gap-4 rounded-xl border border-gray-400 p-8",
+        "grid gap-4 p-0 sm:rounded-xl sm:border sm:border-gray-400 sm:p-4 md:p-8",
         className,
       )}
       onSubmit={(e) => {

@@ -10,7 +10,7 @@ import {
 import { useRef } from "react";
 import { CalendarIcon } from "~/components/icons";
 import { SectionTitle } from "~/features/content";
-import { Button, InfoCard, TextLink } from "~/components";
+import { InfoCard, TextLink } from "~/components";
 import { type CalendarEvent } from "~/types";
 import { formatDate, formatTimeRange } from "~/lib/datetime";
 
@@ -37,7 +37,7 @@ export const EventsSection = (props: EventsSectionProps) => {
           <CalendarIcon className="inline size-7 md:size-8" />
           Upcoming Events
         </SectionTitle>
-        <Button>View All</Button>
+        {/* <Button>View All</Button> */}
       </div>
 
       <div className="grid">
