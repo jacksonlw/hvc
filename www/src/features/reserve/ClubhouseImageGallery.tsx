@@ -28,7 +28,7 @@ const GalleryNavigationButton = (props: GalleryNavigationButtonProps) => {
   return (
     <button
       className={twMerge(
-        "group flex items-center justify-center gap-1 p-2 font-medium hover:text-violet-600 active:text-violet-500",
+        "group -mx-2 flex items-center justify-center gap-1 p-2 font-medium hover:text-violet-600 active:text-violet-500",
         className,
       )}
       {...rest}
@@ -74,13 +74,15 @@ export const ClubhouseImageGallery = (props: ClubhouseImageGalleryProps) => {
           ))}
         </div>
       </div>
-      <div className="flex items-center">
-        <GalleryNavigationButton
-          Icon={ChevronLeftIcon}
-          onClick={() => void handlePrevious()}
-        >
-          Previous
-        </GalleryNavigationButton>
+      <div className="grid grid-cols-3">
+        <div>
+          <GalleryNavigationButton
+            Icon={ChevronLeftIcon}
+            onClick={() => void handlePrevious()}
+          >
+            Previous
+          </GalleryNavigationButton>
+        </div>
         <div className="flex grow justify-center">
           {CLUBHOUSE_IMAGE_URLS.map((image, i) => (
             <button
@@ -97,13 +99,15 @@ export const ClubhouseImageGallery = (props: ClubhouseImageGalleryProps) => {
             </button>
           ))}
         </div>
-        <GalleryNavigationButton
-          Icon={ChevronRightIcon}
-          onClick={() => void handleNext()}
-          textPosition="left"
-        >
-          Next
-        </GalleryNavigationButton>
+        <div className="flex justify-end">
+          <GalleryNavigationButton
+            Icon={ChevronRightIcon}
+            onClick={() => void handleNext()}
+            textPosition="left"
+          >
+            Next
+          </GalleryNavigationButton>
+        </div>
       </div>
     </div>
   );
