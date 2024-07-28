@@ -23,11 +23,7 @@ export default async function EventPage(props: EventPageProps) {
     return notFound();
   }
 
-  const formattedDate = formatDate(
-    event.start.dateTime,
-    event.end.dateTime,
-    event.start.timeZone,
-  );
+  const formattedDate = formatDate(event.start.dateTime, event.start.timeZone);
   const formattedTimeRange = formatTimeRange(
     event.start.dateTime,
     event.end.dateTime,
@@ -48,7 +44,7 @@ export default async function EventPage(props: EventPageProps) {
         <div className="grid grid-cols-2 gap-4 xl:grid-cols-1">
           <div>
             <p className="mb-1 text-sm text-gray-500">Event</p>
-            <Heading className="text-xl">{event.name}</Heading>
+            <Heading className="text-base lg:text-xl">{event.name}</Heading>
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-500">Date</p>

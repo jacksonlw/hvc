@@ -18,19 +18,7 @@ export const formatTimeRange = (
   return `${sTime} - ${eTime}`;
 };
 
-export const formatDate = (
-  start: Date,
-  end: Date,
-  timezone = DEFAULT_TIMEZONE,
-) => {
-  const sDate = dayjs(start).tz(timezone).format("MMMM D, YYYY");
-
-  // If the start and end dates are the same, only show the start date
-  if (dayjs(start).isSame(end, "day")) {
-    return sDate;
-  }
-
-  // Otherwise, show the range of dates
-  const eDate = dayjs(end).tz(timezone).format("MMMM D, YYYY");
-  return `${sDate} - ${eDate}`;
+export const formatDate = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+  console.log(timezone);
+  return dayjs(date).tz(timezone).format("MMMM D, YYYY");
 };

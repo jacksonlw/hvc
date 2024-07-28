@@ -49,8 +49,12 @@ export const EventsSection = (props: EventsSectionProps) => {
         {events.map((event, i) => {
           const { id, name, start, end } = event;
           const isLast = i === events.length - 1;
-          const formattedDate = formatDate(start.dateTime, end.dateTime);
-          const formattedTime = formatTimeRange(start.dateTime, end.dateTime);
+          const formattedDate = formatDate(start.dateTime, start.timeZone);
+          const formattedTime = formatTimeRange(
+            start.dateTime,
+            end.dateTime,
+            start.timeZone,
+          );
 
           return (
             <Link
