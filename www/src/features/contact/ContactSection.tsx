@@ -1,10 +1,10 @@
 "use client";
 import { twMerge } from "tailwind-merge";
 import { useRef } from "react";
-import { useUpdateSectionOffset } from "~/hooks";
+import { useAddSectionInView } from "~/hooks";
 import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
 import { ContactForm } from "./ContactForm";
-import { SectionTitle } from "../content";
+import { SectionTitle } from "../sections";
 import { TextLink } from "~/components";
 
 type ContactSectionProps = {
@@ -16,7 +16,7 @@ export const ContactSection = (props: ContactSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.contact.id;
 
-  useUpdateSectionOffset(id, ref);
+  useAddSectionInView(id, ref);
 
   return (
     <section

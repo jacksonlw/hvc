@@ -2,8 +2,8 @@
 import { twMerge } from "tailwind-merge";
 import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
 import { useRef } from "react";
-import { useUpdateSectionOffset } from "~/hooks";
-import { SectionTitle, SubSectionTitle } from "~/features/content";
+import { useAddSectionInView } from "~/hooks";
+import { SectionTitle, SubSectionTitle } from "~/features/sections";
 import { InfoCard, TextLink } from "~/components";
 import { ReserveFAQ } from "./ReserveFAQ";
 import { ClubhouseImageGallery } from "./ClubhouseImageGallery";
@@ -17,7 +17,7 @@ export const ReserveSection = (props: ReserveSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.reserve.id;
 
-  useUpdateSectionOffset(id, ref);
+  useAddSectionInView(id, ref);
 
   return (
     <section

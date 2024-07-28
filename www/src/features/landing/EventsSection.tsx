@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-import { useUpdateSectionOffset } from "~/hooks";
+import { useAddSectionInView } from "~/hooks";
 import {
   ADDRESS_WITH_ZIP,
   CLUBHOUSE_MAP_LOCATION_URL,
@@ -9,7 +9,7 @@ import {
 } from "~/constants";
 import { useRef } from "react";
 import { CalendarIcon } from "~/components/icons";
-import { SectionTitle } from "~/features/content";
+import { SectionTitle } from "~/features/sections";
 import { InfoCard, TextLink } from "~/components";
 import { type CalendarEvent } from "~/types";
 import { formatDate, formatTimeRange } from "~/lib/datetime";
@@ -24,7 +24,7 @@ export const EventsSection = (props: EventsSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.events.id;
 
-  useUpdateSectionOffset(id, ref);
+  useAddSectionInView(id, ref);
 
   return (
     <section

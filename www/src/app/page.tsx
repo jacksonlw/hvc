@@ -1,14 +1,11 @@
 import { env } from "~/env";
-import {
-  AboutUsSection,
-  EventsSection,
-  LandingHeader,
-} from "~/features/landing";
+import { EventsSection, LandingHeader } from "~/features/landing";
 import { listTenEvents } from "~/lib/calendar";
 import Image from "next/image";
 import { IMAGE_URLS } from "~/constants";
 import { ContactSection } from "~/features/contact";
 import { ReserveSection } from "~/features/reserve";
+import { AboutUsSection } from "~/features/about";
 
 export default async function HomePage() {
   const events = await listTenEvents(env.GOOGLE_EVENTS_CALENDAR_ID);

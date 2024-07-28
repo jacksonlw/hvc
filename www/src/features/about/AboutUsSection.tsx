@@ -1,9 +1,9 @@
 "use client";
 import { twMerge } from "tailwind-merge";
 import { useRef } from "react";
-import { useUpdateSectionOffset } from "~/hooks";
+import { useAddSectionInView } from "~/hooks";
 import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
-import { SectionTitle, SubSectionTitle } from "~/features/content";
+import { SectionTitle, SubSectionTitle } from "~/features/sections";
 import { InfoCard, TextLink } from "~/components";
 import * as Accordion from "@radix-ui/react-accordion";
 import { PlusIcon } from "~/components/icons";
@@ -17,7 +17,7 @@ export const AboutUsSection = (props: AboutUsSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.about.id;
 
-  useUpdateSectionOffset(id, ref);
+  useAddSectionInView(id, ref);
 
   return (
     <section

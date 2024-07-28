@@ -1,2 +1,1 @@
-export * from "./useUpdateSectionOffset";
-export * from "./useActiveSection";
+export * from "./setSectionInView";

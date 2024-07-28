@@ -2,7 +2,7 @@
 import { useCallback, useId, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button, TextField, Label, Select } from "~/components";
-import { SubSectionTitle } from "~/features/content";
+import { SubSectionTitle } from "~/features/sections";
 import { PaperAirplaneIcon } from "~/components/icons";
 import { sendMail } from "~/lib/contact";
 import { ContactStatusMessage } from "./ContactStatusMessage";

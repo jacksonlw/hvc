@@ -2,11 +2,12 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { type Section } from "~/types";
-import { useActiveSection } from "~/hooks";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Heading } from "~/components";
 import { NavigationMenu } from "./NavigationMenu";
+import { useAtom } from "jotai";
+import { sectionInViewAtom } from "~/store/sectionInView";
 
 type NavigationProps = {
   sections: Section[];
@@ -15,13 +16,25 @@ type NavigationProps = {
 
 export const Navigation = (props: NavigationProps) => {
   const { sections = [], className } = props;
-  const activeSectionID = useActiveSection();
+  const [sectionInView] = useAtom(sectionInViewAtom);
   const { scrollY } = useScroll();
   const [hasScrolled, setHasScrolled] = useState(scrollY.get() > 0);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setHasScrolled(y > 0);
   });
+
+  useEffect(() => {
+    let active: string | null = null;
+    for (const key in sectionInView) {
+      const sectionId = key as keyof typeof sectionInView;
+      if (sectionInView[sectionId]) {
+        active = sectionId;
+      }
+    }
+    setActiveSection(active);
+  }, [sectionInView]);
 
   return (
     <nav
@@ -44,7 +57,7 @@ export const Navigation = (props: NavigationProps) => {
           </Link>
         </div>
         {sections.map(({ title, id }) => {
-          const isActive = activeSectionID === id;
+          const isActive = activeSection === id;
           return (
             <Link
               key={id}
