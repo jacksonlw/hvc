@@ -21,6 +21,8 @@ export const metadata = {
   description: "The official website for the Hill & Valley Club.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: {

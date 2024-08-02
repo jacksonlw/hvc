@@ -4,7 +4,7 @@ import { useAtom } from "jotai";
 import { useCallback, useEffect, type RefObject } from "react";
 import { sectionInViewAtom } from "~/store/sectionInView";
 
-export const useAddSectionInView = (
+export const useSetSectionInView = (
   sectionId: string,
   sectionRef: RefObject<HTMLDivElement>,
 ) => {
@@ -13,7 +13,7 @@ export const useAddSectionInView = (
 
   const updateSectionInView = useCallback(() => {
     const rect = sectionRef.current?.getBoundingClientRect();
-    const isActive = rect && rect.top < window.innerHeight / 2;
+    const isActive = rect && rect.top < window.innerHeight / 3;
 
     setSectionInView((state) => ({
       ...state,

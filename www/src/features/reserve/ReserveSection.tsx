@@ -2,7 +2,7 @@
 import { twMerge } from "tailwind-merge";
 import { PHONE_NUMBER, PHONE_NUMBER_LINK, SECTIONS } from "~/constants";
 import { useRef } from "react";
-import { useAddSectionInView } from "~/hooks";
+import { useSetSectionInView } from "~/hooks";
 import { SectionTitle, SubSectionTitle } from "~/features/sections";
 import { InfoCard, TextLink } from "~/components";
 import { ReserveFAQ } from "./ReserveFAQ";
@@ -17,7 +17,7 @@ export const ReserveSection = (props: ReserveSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.reserve.id;
 
-  useAddSectionInView(id, ref);
+  useSetSectionInView(id, ref);
 
   return (
     <section

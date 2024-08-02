@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
-import { useAddSectionInView } from "~/hooks";
+import { useSetSectionInView } from "~/hooks";
 import {
   ADDRESS_WITH_ZIP,
   CLUBHOUSE_MAP_LOCATION_URL,
@@ -24,7 +24,7 @@ export const EventsSection = (props: EventsSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const id = SECTIONS.events.id;
 
-  useAddSectionInView(id, ref);
+  useSetSectionInView(id, ref);
 
   return (
     <section
@@ -46,6 +46,13 @@ export const EventsSection = (props: EventsSectionProps) => {
           <div className="col-span-2">Date</div>
           <div className="col-span-2">Time</div>
         </div>
+        {events.length === 0 ? (
+          <div className="pb-6 pt-8 text-center text-lg">
+            No upcoming events currently scheduled
+          </div>
+        ) : (
+          <></>
+        )}
         {events.map((event, i) => {
           const { id, name, start, end } = event;
           const isLast = i === events.length - 1;

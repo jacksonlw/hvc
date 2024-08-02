@@ -1,1 +1,1 @@
-export * from "./setSectionInView";
+export * from "./useSetSectionInView";
