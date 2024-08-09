@@ -12,7 +12,6 @@ export const sendMail = async (
   email: string,
   message: string,
 ): Promise<ServerActionResponse> => {
-  console.log(name, subject, email, message);
   const validationRes = validateContactForm(name, subject, email, message);
   if (!validationRes.success) {
     return validationRes;
@@ -24,8 +23,6 @@ export const sendMail = async (
   });
 
   const subjectLabel = CONTACT_SUBJECTS.find((s) => s.value === subject)!.label;
-  console.log(subjectLabel);
-
   try {
     const res = await mailjet
       .post("send", {

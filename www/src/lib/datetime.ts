@@ -19,6 +19,5 @@ export const formatTimeRange = (
 };
 
 export const formatDate = (date: Date, timezone = DEFAULT_TIMEZONE) => {
-  console.log(timezone);
   return dayjs(date).tz(timezone).format("MMMM D, YYYY");
 };
