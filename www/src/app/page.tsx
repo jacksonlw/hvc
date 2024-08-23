@@ -9,7 +9,9 @@ import { EventsSection } from "~/features/events";
 import { listCalendarEvents } from "~/lib/calendar";
 
 export default async function HomePage() {
-  const events = await listCalendarEvents(env.EVENTS_GOOGLE_CALENDAR_ID, 10);
+  const events = await listCalendarEvents(env.EVENTS_GOOGLE_CALENDAR_ID, {
+    limit: 10,
+  });
 
   return (
     <div className="mb-16 grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 xl:gap-x-16">
