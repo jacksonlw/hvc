@@ -1,3 +1,6 @@
+"use client";
+import { TextLink } from "~/components";
+
 type FooterProps = {
   className?: string;
 };
@@ -9,6 +12,9 @@ export const Footer = (props: FooterProps) => {
         <p className="grow">
           Hill & Valley Club &copy; {new Date().getFullYear()}
         </p>
+        <TextLink href="/meetings#" scroll={false}>
+          Club Meetings
+        </TextLink>
       </div>
     </footer>
   );

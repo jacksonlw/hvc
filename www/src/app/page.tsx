@@ -1,14 +1,15 @@
 import { env } from "~/env";
-import { EventsSection, LandingHeader } from "~/features/landing";
-import { listTenEvents } from "~/lib/calendar";
+import { LandingHeader } from "~/features/landing";
 import Image from "next/image";
 import { IMAGE_URLS } from "~/constants";
 import { ContactSection } from "~/features/contact";
 import { ReserveSection } from "~/features/reserve";
 import { AboutUsSection } from "~/features/about";
+import { EventsSection } from "~/features/events";
+import { listCalendarEvents } from "~/lib/calendar";
 
 export default async function HomePage() {
-  const events = await listTenEvents(env.GOOGLE_EVENTS_CALENDAR_ID);
+  const events = await listCalendarEvents(env.EVENTS_GOOGLE_CALENDAR_ID, 10);
 
   return (
     <div className="mb-16 grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2 xl:gap-x-16">

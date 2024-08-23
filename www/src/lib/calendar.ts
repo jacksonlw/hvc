@@ -18,7 +18,15 @@ export const getEvent = async (calendarId: string, eventId: string) => {
   return convertResToEvent(res.data);
 };
 
-export const listTenEvents = async (calendarId: string) => {
+type ListEventsOptions = Partial<{
+  limit: number;
+  timeMin: Date;
+  timeMax: Date;
+}>;
+export const listCalendarEvents = async (
+  calendarId: string,
+  options: ListEventsOptions,
+) => {
   const auth = createGoogleAuth();
 
   const cal = google.calendar({
@@ -28,8 +36,9 @@ export const listTenEvents = async (calendarId: string) => {
 
   const res = await cal.events.list({
     calendarId,
-    maxResults: 10,
-    timeMin: new Date().toISOString(),
+    maxResults: options.limit,
+    timeMin: options.timeMin?.toISOString() ?? new Date().toISOString(),
+    timeMax: options.timeMax?.toISOString(),
     orderBy: "startTime",
     singleEvents: true,
   });

@@ -10,14 +10,26 @@ import { formatDate, formatTimeRange } from "~/lib/datetime";
 
 type EventPageProps = {
   params: {
-    id: string;
+    calendarName: string;
+    eventId: string;
   };
+};
+
+const calendars = {
+  events: env.EVENTS_GOOGLE_CALENDAR_ID,
+  meetings: env.CLUB_MEETINGS_GOOGLE_CALENDAR_ID,
 };
 
 export default async function EventPage(props: EventPageProps) {
   const { params } = props;
-  const eventId = params.id;
-  const event = await getEvent(env.GOOGLE_EVENTS_CALENDAR_ID, eventId);
+  const { calendarName, eventId } = params;
+
+  if (calendarName !== "events" && calendarName !== "meetings") {
+    return notFound();
+  }
+  const calendarId = calendars[calendarName];
+
+  const event = await getEvent(calendarId, eventId);
 
   if (!event) {
     return notFound();

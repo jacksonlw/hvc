@@ -14,7 +14,9 @@ export const env = createEnv({
     GOOGLE_SERVICE_ACCOUNT_PK: z.string(),
     GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string(),
     GOOGLE_CLIENT_ID: z.string(),
-    GOOGLE_EVENTS_CALENDAR_ID: z.string(),
+
+    EVENTS_GOOGLE_CALENDAR_ID: z.string(),
+    CLUB_MEETINGS_GOOGLE_CALENDAR_ID: z.string(),
 
     MAIL_FROM: z.string(),
     MAIL_TO: z.string(),
@@ -44,7 +46,10 @@ export const env = createEnv({
     GOOGLE_SERVICE_ACCOUNT_PK: process.env.GOOGLE_SERVICE_ACCOUNT_PK,
     GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_EVENTS_CALENDAR_ID: process.env.GOOGLE_EVENTS_CALENDAR_ID,
+
+    EVENTS_GOOGLE_CALENDAR_ID: process.env.EVENTS_GOOGLE_CALENDAR_ID,
+    CLUB_MEETINGS_GOOGLE_CALENDAR_ID:
+      process.env.CLUB_MEETINGS_GOOGLE_CALENDAR_ID,
 
     MAIL_FROM: process.env.MAIL_FROM,
     MAIL_TO: process.env.MAIL_TO,
