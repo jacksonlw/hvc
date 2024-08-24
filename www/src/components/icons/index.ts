@@ -16,3 +16,4 @@ export * from "./CheckCircleIcon";
 export * from "./XCircleIcon";
 export * from "./ChevronLeftIcon";
 export * from "./ChevronRightIcon";
+export * from "./ClockIcon";

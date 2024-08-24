@@ -1,5 +1,6 @@
 export type CalendarEvent = {
   id: string;
+  calendarId: string;
   name: string;
   start: CalendarEventDateTime;
   end: CalendarEventDateTime;

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
-import { formatDate, formatTimeRange } from "~/lib/datetime";
 import { type CalendarEvent } from "~/types";
+import { EventCard } from "./EventCard";
+import { getMonth } from "~/lib/datetime";
+import { twMerge } from "tailwind-merge";
 
 type EventsTableProps = {
   calendarName: string;
@@ -13,7 +13,36 @@ export const EventsTable = (props: EventsTableProps) => {
 
   return (
     <div>
-      <div className="grid grid-cols-7 border-b border-gray-300 px-2 py-3 text-sm text-gray-500">
+      <div className="grid gap-3">
+        {events.map((event, i) => {
+          // add month label if the month changes. Do not add month label if it's the current month
+          const prevEvent = events[i - 1];
+          const currentMonth = getMonth(new Date(), event.start.timeZone);
+          const addMonthLabel =
+            (prevEvent &&
+              getMonth(prevEvent.start.dateTime, prevEvent.start.timeZone) !==
+                getMonth(event.start.dateTime, event.start.timeZone)) ??
+            getMonth(event.start.dateTime, event.start.timeZone) !==
+              currentMonth;
+
+          return (
+            <>
+              {addMonthLabel && (
+                <span className={twMerge("text-lg", i !== 0 && "mt-4")}>
+                  {getMonth(event.start.dateTime, event.start.timeZone)}
+                </span>
+              )}
+              <EventCard
+                key={event.id}
+                event={event}
+                calendarName={calendarName}
+              />
+            </>
+          );
+        })}
+      </div>
+
+      {/* <div className="grid grid-cols-7 border-b border-gray-300 px-2 py-3 text-sm text-gray-500">
         <div className="col-span-3">Event Name</div>
         <div className="col-span-2">Date</div>
         <div className="col-span-2">Time</div>
@@ -51,7 +80,7 @@ export const EventsTable = (props: EventsTableProps) => {
             <p className="col-span-2 text-sm sm:text-base">{formattedTime}</p>
           </Link>
         );
-      })}
+      })} */}
     </div>
   );
 };

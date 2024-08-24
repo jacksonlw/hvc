@@ -15,7 +15,7 @@ export const getEvent = async (calendarId: string, eventId: string) => {
     eventId,
   });
 
-  return convertResToEvent(res.data);
+  return convertResToEvent(calendarId, res.data);
 };
 
 type ListEventsOptions = Partial<{
@@ -44,15 +44,19 @@ export const listCalendarEvents = async (
   });
 
   const events = res.data.items
-    ?.map(convertResToEvent)
+    ?.map((event) => convertResToEvent(calendarId, event))
     .filter(Boolean) as CalendarEvent[];
 
   return events;
 };
 
-const convertResToEvent = (resEvent: calendar_v3.Schema$Event) => {
+const convertResToEvent = (
+  calendarId: string,
+  resEvent: calendar_v3.Schema$Event,
+) => {
   if (
     !(
+      calendarId &&
       resEvent.id &&
       resEvent.summary &&
       resEvent.start?.dateTime &&
@@ -68,6 +72,7 @@ const convertResToEvent = (resEvent: calendar_v3.Schema$Event) => {
 
   return {
     id: resEvent.id,
+    calendarId,
     name: resEvent.summary,
     start: {
       dateTime: new Date(resEvent.start?.dateTime),

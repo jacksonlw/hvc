@@ -21,3 +21,19 @@ export const formatTimeRange = (
 export const formatDate = (date: Date, timezone = DEFAULT_TIMEZONE) => {
   return dayjs(date).tz(timezone).format("MMMM D, YYYY");
 };
+
+export const getMonthShort = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+  return dayjs(date).tz(timezone).format("MMM");
+};
+
+export const getMonth = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+  return dayjs(date).tz(timezone).format("MMMM");
+};
+
+export const getDayNameShort = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+  return dayjs(date).tz(timezone).format("ddd");
+};
+
+export const getDayNumber = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+  return dayjs(date).tz(timezone).format("DD");
+};
