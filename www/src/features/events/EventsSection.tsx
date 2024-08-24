@@ -9,9 +9,10 @@ import {
 import { useRef } from "react";
 import { CalendarIcon } from "~/components/icons";
 import { SectionTitle } from "~/features/sections";
-import { InfoCard, TextLink } from "~/components";
+import { Button, InfoCard, TextLink } from "~/components";
 import { type CalendarEvent } from "~/types";
 import { EventsTable } from "./EventsTable";
+import Link from "next/link";
 
 type EventsSectionProps = {
   className?: string;
@@ -36,7 +37,9 @@ export const EventsSection = (props: EventsSectionProps) => {
           <CalendarIcon className="inline size-7 md:size-8" />
           Upcoming Events
         </SectionTitle>
-        {/* <Button>View All</Button> */}
+        <Link href="/c/events">
+          <Button>View All</Button>
+        </Link>
       </div>
 
       <div className="grid">

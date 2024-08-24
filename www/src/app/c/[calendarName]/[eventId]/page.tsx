@@ -1,33 +1,24 @@
 import { notFound } from "next/navigation";
 import { Heading, TextLink } from "~/components";
 import { ADDRESS_WITH_ZIP, CLUBHOUSE_MAP_LOCATION_URL } from "~/constants";
-import { env } from "~/env";
 import { EmbedPDF } from "~/features/embed";
 import { BackButton } from "~/features/navigation";
 import { ArrowLeftIcon } from "~/components/icons";
 import { getEvent } from "~/lib/calendar";
 import { formatDate, formatTimeRange } from "~/lib/datetime";
+import { CALENDARS } from "~/constants/calendar";
 
 type EventPageProps = {
   params: {
-    calendarName: string;
+    calendarName: "events" | "meetings";
     eventId: string;
   };
-};
-
-const calendars = {
-  events: env.EVENTS_GOOGLE_CALENDAR_ID,
-  meetings: env.CLUB_MEETINGS_GOOGLE_CALENDAR_ID,
 };
 
 export default async function EventPage(props: EventPageProps) {
   const { params } = props;
   const { calendarName, eventId } = params;
-
-  if (calendarName !== "events" && calendarName !== "meetings") {
-    return notFound();
-  }
-  const calendarId = calendars[calendarName];
+  const calendarId = CALENDARS[calendarName];
 
   const event = await getEvent(calendarId, eventId);
 

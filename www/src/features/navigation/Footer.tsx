@@ -12,9 +12,7 @@ export const Footer = (props: FooterProps) => {
         <p className="grow">
           Hill & Valley Club &copy; {new Date().getFullYear()}
         </p>
-        <TextLink href="/meetings#" scroll={false}>
-          Club Meetings
-        </TextLink>
+        <TextLink href="/meetings">Club Meetings</TextLink>
       </div>
     </footer>
   );
