@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ClockIcon } from "~/components/icons";
 import { formatTimeRange, getDayNameShort, getDayNumber } from "~/lib/datetime";
-import { type CalendarEvent } from "~/types";
+import { type CalendarName, type CalendarEvent } from "~/types";
 
 type EventCardProps = {
-  calendarName: string;
+  calendarName: CalendarName;
   event: CalendarEvent;
   className?: string;
 };

@@ -1,3 +1,5 @@
+export type CalendarName = "events" | "meetings";
+
 export type CalendarEvent = {
   id: string;
   calendarId: string;

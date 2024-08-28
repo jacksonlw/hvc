@@ -1,13 +1,15 @@
+import { notFound } from "next/navigation";
 import { Heading } from "~/components";
 import { CALENDARS } from "~/constants/calendar";
 import { EventsTable } from "~/features/events/EventsTable";
 import { listCalendarEvents } from "~/lib/calendar";
+import { type CalendarName } from "~/types";
 
 const TIME_MAX_OFFSET = 1000 * 60 * 60 * 24 * 30 * 3; // 3 months
 
 type CalendarPageProps = {
   params: {
-    calendarName: "events" | "meetings";
+    calendarName: CalendarName;
   };
 };
 
@@ -21,12 +23,20 @@ export default async function CalendarPage(props: CalendarPageProps) {
     timeMax: new Date(Date.now() + TIME_MAX_OFFSET),
   });
 
+  if (!meetings) {
+    return notFound();
+  }
+
   return (
-    <div className="pb-12">
+    <>
       <Heading as="h1" className="my-8 text-3xl">
         {title}
       </Heading>
-      <EventsTable events={meetings} calendarName={calendarName} />
-    </div>
+      <EventsTable
+        events={meetings}
+        calendarName={calendarName}
+        className="pb-12"
+      />
+    </>
   );
 }

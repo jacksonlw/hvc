@@ -2,7 +2,6 @@ import "~/styles.css";
 
 import { DM_Sans, Roboto_Slab } from "next/font/google";
 import { Footer, Navigation } from "~/features/navigation";
-import { Provider } from "jotai";
 import { SECTIONS } from "~/constants";
 
 const dmSans = DM_Sans({
@@ -33,16 +32,14 @@ export default function RootLayout({
       lang="en"
       className={`bg-white font-sans ${dmSans.variable} ${robotoSlab.variable}`}
     >
-      <body>
-        <Provider>
-          <Navigation
-            sections={Object.keys(SECTIONS).map((key) => {
-              return SECTIONS[key as keyof typeof SECTIONS];
-            })}
-          />
-          <main className="container min-h-svh pt-navOffset">{children}</main>
-          <Footer />
-        </Provider>
+      <body className="flex min-h-svh flex-col">
+        <Navigation
+          sections={Object.keys(SECTIONS).map((key) => {
+            return SECTIONS[key as keyof typeof SECTIONS];
+          })}
+        />
+        <main className="container grow pt-navOffset">{children}</main>
+        <Footer />
       </body>
     </html>
   );

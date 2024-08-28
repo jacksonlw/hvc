@@ -37,7 +37,7 @@ export const EventsSection = (props: EventsSectionProps) => {
           <CalendarIcon className="inline size-7 md:size-8" />
           Upcoming Events
         </SectionTitle>
-        <Link href="/c/events" onClick={() => window.scrollTo(0, 0)}>
+        <Link href="/c/events">
           <Button>View All</Button>
         </Link>
       </div>
