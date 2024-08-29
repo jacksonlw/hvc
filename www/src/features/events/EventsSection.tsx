@@ -38,7 +38,7 @@ export const EventsSection = (props: EventsSectionProps) => {
           Upcoming Events
         </SectionTitle>
         <Link href="/c/events">
-          <Button>View All</Button>
+          <Button>See all events</Button>
         </Link>
       </div>
 

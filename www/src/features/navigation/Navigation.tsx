@@ -16,7 +16,9 @@ type NavigationProps = {
 
 export const Navigation = (props: NavigationProps) => {
   const { sections = [], className } = props;
+
   const [sectionInView] = useAtom(sectionInViewAtom);
+
   const { scrollY } = useScroll();
   const [hasScrolled, setHasScrolled] = useState(scrollY.get() > 0);
   const [activeSection, setActiveSection] = useState<string | null>(null);

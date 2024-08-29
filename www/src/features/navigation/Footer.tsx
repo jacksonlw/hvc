@@ -8,7 +8,7 @@ type FooterProps = {
 export const Footer = (props: FooterProps) => {
   return (
     <footer className="border-t border-gray-300 py-6">
-      <div className="container flex items-center">
+      <div className="container flex items-center gap-4">
         <p className="grow">
           Hill & Valley Club &copy; {new Date().getFullYear()}
         </p>

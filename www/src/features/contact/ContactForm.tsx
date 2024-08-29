@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button, TextField, Label, Select } from "~/components";
 import { SubSectionTitle } from "~/features/sections";
@@ -7,6 +7,7 @@ import { PaperAirplaneIcon } from "~/components/icons";
 import { sendMail } from "~/lib/contact";
 import { ContactStatusMessage } from "./ContactStatusMessage";
 import { CONTACT_SUBJECTS } from "~/constants";
+import { useSearchParams } from "next/navigation";
 
 type ContactFormProps = {
   className?: string;
@@ -14,6 +15,10 @@ type ContactFormProps = {
 
 export const ContactForm = (props: ContactFormProps) => {
   const { className } = props;
+
+  const params = useSearchParams();
+
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
 
   const nameId = useId();
   const emailId = useId();
@@ -83,6 +88,13 @@ export const ContactForm = (props: ContactFormProps) => {
     resetValues,
   ]);
 
+  useEffect(() => {
+    const hash = document.location.hash;
+    if (hash === "#contact") {
+      nameInputRef.current?.focus();
+    }
+  }, [params]);
+
   return (
     <form
       className={twMerge(
@@ -101,6 +113,7 @@ export const ContactForm = (props: ContactFormProps) => {
       <div>
         <Label htmlFor={nameId}>Name</Label>
         <TextField
+          ref={nameInputRef}
           id={nameId}
           value={nameValue}
           onChange={(e) => {
