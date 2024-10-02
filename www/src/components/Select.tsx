@@ -37,7 +37,7 @@ export const Select = (props: SelectProps) => {
         <span
           className={twMerge(
             "pointer-events-none",
-            !activeItem && "text-gray-500",
+            !activeItem && "text-gray-600",
           )}
         >
           {activeItem?.label ?? placeholder}

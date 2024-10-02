@@ -46,19 +46,19 @@ export default async function EventPage(props: EventPageProps) {
 
         <div className="grid grid-cols-2 gap-4 xl:grid-cols-1">
           <div>
-            <p className="mb-1 text-sm text-gray-500">Event</p>
+            <p className="mb-1 text-sm text-gray-600">Event</p>
             <Heading className="text-base lg:text-xl">{event.name}</Heading>
           </div>
           <div>
-            <p className="mb-1 text-sm text-gray-500">Date</p>
+            <p className="mb-1 text-sm text-gray-600">Date</p>
             <p>{formattedDate}</p>
           </div>
           <div>
-            <p className="mb-1 text-sm text-gray-500">Time</p>
+            <p className="mb-1 text-sm text-gray-600">Time</p>
             <p>{formattedTimeRange}</p>
           </div>
           <div>
-            <p className="mb-1 text-sm text-gray-500">Location</p>
+            <p className="mb-1 text-sm text-gray-600">Location</p>
             <TextLink href={CLUBHOUSE_MAP_LOCATION_URL} target="_blank">
               {ADDRESS_WITH_ZIP}
             </TextLink>

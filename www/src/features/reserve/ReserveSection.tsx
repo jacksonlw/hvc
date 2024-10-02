@@ -60,23 +60,29 @@ export const ReserveSection = (props: ReserveSectionProps) => {
         <SubSectionTitle>Pricing</SubSectionTitle>
 
         <div className="mb-4 grid">
-          <div className="bg-gray-100 p-2 text-lg">All Day</div>
-          <div className="flex items-center  p-2 pl-6">
-            <p className="grow text-gray-500">8:00am - 12:00am (Midnight)</p>
-            <p className="font-medium">$2000</p>
-          </div>
           <div className="bg-gray-100 p-2 text-lg">Hourly</div>
           <div className="flex items-center p-2 pl-6">
-            <p className="grow text-gray-500">Sunday - Thursday</p>
+            <p className="grow text-gray-600">Sunday</p>
+            <p className="font-medium">$100/hr</p>
+          </div>
+          <div className="flex items-center p-2 pl-6">
+            <p className="grow text-gray-600">Monday - Thursday</p>
             <p className="font-medium">$50/hr</p>
           </div>
           <div className="flex items-center p-2 pl-6">
-            <p className="grow text-gray-500">Friday</p>
-            <p className="font-medium">$150/hr</p>
+            <p className="grow text-gray-600">Friday</p>
+            <p className="font-medium">$100/hr</p>
           </div>
           <div className="flex items-center p-2 pl-6">
-            <p className="grow text-gray-500">Saturday</p>
+            <p className="grow text-gray-600">Saturday</p>
             <p className="font-medium">$200/hr</p>
+          </div>
+          <div className="bg-gray-100 p-2 text-lg">
+            All Day (8:00am - 12:00am)
+          </div>
+          <div className="flex items-center  p-2 pl-6">
+            <p className="grow text-gray-600">Saturday</p>
+            <p className="font-medium">$2000</p>
           </div>
         </div>
         <InfoCard>

@@ -33,7 +33,7 @@ export const ReserveFAQ = (props: ReserveFAQProps) => {
             </Accordion.Header>
 
             <Accordion.Content className="select-none overflow-hidden px-2 data-[state=closed]:animate-radixAccordionSlideUp data-[state=open]:animate-radixAccordionSlideDown">
-              <div className="py-3 text-gray-500">{answer}</div>
+              <div className="py-3 text-gray-600">{answer}</div>
             </Accordion.Content>
           </Accordion.Item>
         );
