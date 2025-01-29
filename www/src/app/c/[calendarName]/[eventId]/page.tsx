@@ -21,17 +21,16 @@ export default async function EventPage(props: EventPageProps) {
   const calendarId = CALENDARS[calendarName];
 
   const event = await getEvent(calendarId, eventId);
-
   if (!event) {
     return notFound();
   }
 
-  const formattedDate = formatDate(event.start.dateTime, event.start.timeZone);
+  const formattedDate = formatDate(event.startDate);
   const formattedTimeRange = formatTimeRange(
-    event.start.dateTime,
-    event.end.dateTime,
-    event.start.timeZone,
+    event.start?.dateTime,
+    event.end?.dateTime,
   );
+  const firstAttachmentId = event.attachments?.at(0)?.fileId;
 
   return (
     <div className="flex min-h-[calc(100svh-theme(spacing.navOffset))] flex-col gap-6 xl:grid xl:grid-cols-4">
@@ -47,7 +46,7 @@ export default async function EventPage(props: EventPageProps) {
         <div className="grid grid-cols-2 gap-4 xl:grid-cols-1">
           <div>
             <p className="mb-1 text-sm text-gray-600">Event</p>
-            <Heading className="text-base lg:text-xl">{event.name}</Heading>
+            <Heading className="text-base lg:text-xl">{event.summary}</Heading>
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-600">Date</p>
@@ -55,7 +54,7 @@ export default async function EventPage(props: EventPageProps) {
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-600">Time</p>
-            <p>{formattedTimeRange}</p>
+            <p>{event.isAllDay ? <>All day event</> : formattedTimeRange}</p>
           </div>
           <div>
             <p className="mb-1 text-sm text-gray-600">Location</p>
@@ -66,10 +65,10 @@ export default async function EventPage(props: EventPageProps) {
         </div>
       </div>
       <div className="flex grow flex-col pb-4 xl:col-span-3 xl:pt-4">
-        {event.attachmentFileId ? (
+        {firstAttachmentId ? (
           <EmbedPDF
             className="grow"
-            url={`https://drive.google.com/file/d/${event.attachmentFileId}/preview`}
+            url={`https://drive.google.com/file/d/${firstAttachmentId}/preview`}
           />
         ) : (
           <div className="flex grow items-center justify-center rounded-xl border border-gray-300 bg-gray-100 p-4">

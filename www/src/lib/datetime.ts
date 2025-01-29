@@ -7,33 +7,44 @@ dayjs.extend(timezone);
 
 const DEFAULT_TIMEZONE = "America/Los_Angeles";
 
-export const formatTimeRange = (
-  start: Date,
-  end: Date,
-  timezone = DEFAULT_TIMEZONE,
-) => {
-  const sTime = dayjs(start).tz(timezone).format("h:mma");
-  const eTime = dayjs(end).tz(timezone).format("h:mma");
+type DateConfig = Date | string | undefined | null;
 
-  return `${sTime} - ${eTime}`;
+export const formatTimeRange = (
+  start: DateConfig,
+  end: DateConfig,
+  timeZone = DEFAULT_TIMEZONE,
+) => {
+  const startTime = dayjs(start).tz(timeZone).format("h:mma");
+  const endTime = dayjs(end).tz(timeZone).format("h:mma");
+
+  return `${startTime} - ${endTime}`;
 };
 
-export const formatDate = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+export const formatDate = (date: DateConfig, timezone = DEFAULT_TIMEZONE) => {
   return dayjs(date).tz(timezone).format("MMMM D, YYYY");
 };
 
-export const getMonthShort = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+export const formatMonthShort = (
+  date: DateConfig,
+  timezone = DEFAULT_TIMEZONE,
+) => {
   return dayjs(date).tz(timezone).format("MMM");
 };
 
-export const getMonth = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+export const formatMonth = (date: DateConfig, timezone = DEFAULT_TIMEZONE) => {
   return dayjs(date).tz(timezone).format("MMMM");
 };
 
-export const getDayNameShort = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+export const formatDayNameShort = (
+  date: DateConfig,
+  timezone = DEFAULT_TIMEZONE,
+) => {
   return dayjs(date).tz(timezone).format("ddd");
 };
 
-export const getDayNumber = (date: Date, timezone = DEFAULT_TIMEZONE) => {
+export const formatDayNumber = (
+  date: DateConfig,
+  timezone = DEFAULT_TIMEZONE,
+) => {
   return dayjs(date).tz(timezone).format("DD");
 };

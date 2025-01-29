@@ -1,16 +1,10 @@
+import { type calendar_v3 } from "googleapis";
+
 export type CalendarName = "events" | "meetings";
 
-export type CalendarEvent = {
-  id: string;
+export interface CalendarEvent extends calendar_v3.Schema$Event {
   calendarId: string;
-  name: string;
-  start: CalendarEventDateTime;
-  end: CalendarEventDateTime;
-
-  attachmentFileId?: string;
-};
-
-export type CalendarEventDateTime = {
-  dateTime: Date;
-  timeZone: string;
-};
+  startDate: string;
+  endDate: string;
+  isAllDay: boolean;
+}

@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { ClockIcon } from "~/components/icons";
 import { ArrowUpRightIcon } from "~/components/icons/ArrowUpRightIcon";
-import { formatTimeRange, getDayNameShort, getDayNumber } from "~/lib/datetime";
-import { type CalendarName, type CalendarEvent } from "~/types";
+import { DocumentTextIcon } from "~/components/icons/DocumentTextIcon";
+import {
+  formatTimeRange,
+  formatDayNameShort,
+  formatDayNumber,
+} from "~/lib/datetime";
+import { type CalendarEvent, type CalendarName } from "~/types";
 
 type EventCardProps = {
   calendarName: CalendarName;
@@ -20,26 +25,33 @@ export const EventCard = (props: EventCardProps) => {
       aria-label="View event details"
     >
       <div className="flex w-24 flex-col items-center justify-center py-1">
-        <p>{getDayNameShort(event.start.dateTime, event.start.timeZone)}</p>
-        <p className="text-3xl">
-          {getDayNumber(event.start.dateTime, event.start.timeZone)}
-        </p>
+        <p>{formatDayNameShort(event.startDate)}</p>
+        <p className="text-3xl">{formatDayNumber(event.startDate)}</p>
       </div>
       <div className="w-px bg-neutral-300"></div>
       <div className="flex grow items-center justify-between px-6 py-1">
         <div className="flex h-full flex-col justify-between">
-          <h2 className="mr-6 text-xl font-medium">{event.name}</h2>
-          <p className="flex items-center gap-2 text-neutral-500">
-            <ClockIcon />
-            {formatTimeRange(
-              event.start.dateTime,
-              event.end.dateTime,
-              event.start.timeZone,
+          <h2 className="mr-6 text-xl">{event.summary}</h2>
+          <div className="flex items-center gap-4">
+            <p className="flex items-center gap-1 text-neutral-500">
+              <ClockIcon />
+              {event.isAllDay ? (
+                <>All day event</>
+              ) : (
+                formatTimeRange(event.start?.dateTime, event.end?.dateTime)
+              )}
+            </p>
+            {event.attachments && event.attachments.length > 0 ? (
+              <p className="flex items-center gap-1 text-neutral-500">
+                <DocumentTextIcon /> Additional details provided
+              </p>
+            ) : (
+              <></>
             )}
-          </p>
+          </div>
         </div>
         <span className="flex items-center gap-2 text-violet-600 opacity-0 transition group-hover:opacity-100">
-          See more
+          <span>See more</span>
           <ArrowUpRightIcon className="size-5" />
         </span>
       </div>

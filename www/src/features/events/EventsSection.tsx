@@ -10,9 +10,9 @@ import { useRef } from "react";
 import { CalendarIcon } from "~/components/icons";
 import { SectionTitle } from "~/features/sections";
 import { Button, InfoCard, TextLink } from "~/components";
-import { type CalendarEvent } from "~/types";
 import { EventsTable } from "./EventsTable";
 import Link from "next/link";
+import { type CalendarEvent } from "~/types";
 
 type EventsSectionProps = {
   className?: string;

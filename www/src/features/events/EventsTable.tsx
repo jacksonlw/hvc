@@ -1,6 +1,6 @@
-import { type CalendarName, type CalendarEvent } from "~/types";
+import { type CalendarEvent, type CalendarName } from "~/types";
 import { EventCard } from "./EventCard";
-import { getMonth } from "~/lib/datetime";
+import { formatMonth } from "~/lib/datetime";
 import { twMerge } from "tailwind-merge";
 import { Badge } from "~/components";
 
@@ -16,38 +16,28 @@ export const EventsTable = (props: EventsTableProps) => {
   return (
     <div className={twMerge("grid gap-4", className)}>
       {events.map((event, i) => {
+        const eventMonth = formatMonth(event.startDate);
+
+        let prevMonth = formatMonth(new Date()); // default current month
         const prevEvent = events[i - 1];
-
-        const eventMonth = getMonth(event.start.dateTime, event.start.timeZone);
-
-        let addMonthLabel = true;
         if (prevEvent) {
-          const prevMonth = getMonth(
-            prevEvent.start.dateTime,
-            prevEvent.start.timeZone,
-          );
-          addMonthLabel = prevMonth !== eventMonth;
-        } else {
-          const currentMonth = getMonth(new Date(), event.start.timeZone);
-          addMonthLabel = eventMonth !== currentMonth;
+          prevMonth = formatMonth(prevEvent.startDate); // use previous event month
         }
 
-        if (addMonthLabel) {
-          return (
-            <div
-              key={event.id}
-              className={twMerge("flex flex-col gap-4", i !== 0 && "mt-4")}
-            >
-              <Badge className="w-fit">
-                {getMonth(event.start.dateTime, event.start.timeZone)}
-              </Badge>
-              <EventCard event={event} calendarName={calendarName} />
-            </div>
-          );
-        }
-
+        const addMonthLabel = eventMonth !== prevMonth;
         return (
-          <EventCard key={event.id} event={event} calendarName={calendarName} />
+          <>
+            {addMonthLabel ? (
+              <Badge className="mt-2 w-fit">{eventMonth}</Badge>
+            ) : (
+              <></>
+            )}
+            <EventCard
+              key={event.id}
+              event={event}
+              calendarName={calendarName}
+            />
+          </>
         );
       })}
     </div>
