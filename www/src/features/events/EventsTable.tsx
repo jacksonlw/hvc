@@ -12,6 +12,7 @@ type EventsTableProps = {
 
 export const EventsTable = (props: EventsTableProps) => {
   const { events, calendarName, className } = props;
+  console.log(events);
 
   return (
     <div className={twMerge("grid gap-4", className)}>

@@ -30,9 +30,9 @@ export const EventCard = (props: EventCardProps) => {
       </div>
       <div className="w-px bg-neutral-300"></div>
       <div className="flex grow items-center justify-between px-6 py-1">
-        <div className="flex h-full flex-col justify-between">
-          <h2 className="mr-6 text-xl">{event.summary}</h2>
-          <div className="flex items-center gap-4">
+        <div className="flex h-full flex-col justify-between gap-2">
+          <h2 className="text-xl">{event.summary}</h2>
+          <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-4">
             <p className="flex items-center gap-1 text-neutral-500">
               <ClockIcon />
               {event.isAllDay ? (
@@ -51,7 +51,6 @@ export const EventCard = (props: EventCardProps) => {
           </div>
         </div>
         <span className="flex items-center gap-2 text-violet-600 opacity-0 transition group-hover:opacity-100">
-          <span>See more</span>
           <ArrowUpRightIcon className="size-5" />
         </span>
       </div>

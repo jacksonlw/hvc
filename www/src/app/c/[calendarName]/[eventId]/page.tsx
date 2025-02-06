@@ -4,7 +4,7 @@ import { ADDRESS_WITH_ZIP, CLUBHOUSE_MAP_LOCATION_URL } from "~/constants";
 import { EmbedPDF } from "~/features/embed";
 import { BackButton } from "~/features/navigation";
 import { ArrowLeftIcon } from "~/components/icons";
-import { getEvent } from "~/lib/calendar";
+import { getCalendarEvent } from "~/lib/calendar";
 import { formatDate, formatTimeRange } from "~/lib/datetime";
 import { CALENDARS } from "~/constants/calendar";
 
@@ -20,7 +20,7 @@ export default async function EventPage(props: EventPageProps) {
   const { calendarName, eventId } = params;
   const calendarId = CALENDARS[calendarName];
 
-  const event = await getEvent(calendarId, eventId);
+  const event = await getCalendarEvent(calendarId, eventId);
   if (!event) {
     return notFound();
   }

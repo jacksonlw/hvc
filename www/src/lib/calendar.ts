@@ -2,6 +2,7 @@ import { type calendar_v3, google } from "googleapis";
 import { createGoogleAuth } from "./google";
 import { type CalendarEvent } from "~/types";
 import { formatDate } from "./datetime";
+import dayjs from "dayjs";
 
 type ListEventsOptions = Partial<{
   limit: number;
@@ -41,6 +42,12 @@ const convertResToEvent = (
   return event;
 };
 
+/**
+ * Checks if the calendar event starts and ends on the same day.
+ *
+ * @param event the event to check.
+ * @returns true if the is a same day event; otherwise false.
+ */
 export const isSameDayEvent = (event: CalendarEvent): boolean => {
   return (
     !!event.startDate &&
@@ -49,7 +56,33 @@ export const isSameDayEvent = (event: CalendarEvent): boolean => {
   );
 };
 
-export const getEvent = async (
+export const splitMultiDayEvent = (event: CalendarEvent): CalendarEvent[] => {
+  const events: CalendarEvent[] = [];
+  const start = dayjs(event.startDate);
+  const end = dayjs(event.endDate);
+
+  const n = end.diff(start, "day");
+  for (let i = 0; i <= n; i++) {
+    const date = start.add(i, "day");
+    const newEvent: CalendarEvent = {
+      ...event,
+      startDate: date.toDate(),
+      endDate: date.toDate(),
+    };
+    events.push(newEvent);
+  }
+
+  return events;
+};
+
+/**
+ * Get a single google calendar event.
+ *
+ * @param calendarId the google calendar id which has the event.
+ * @param eventId the google calendar event id.
+ * @returns the calendar event or null if none exists.
+ */
+export const getCalendarEvent = async (
   calendarId: string,
   eventId: string,
 ): Promise<CalendarEvent | null> => {
@@ -65,13 +98,19 @@ export const getEvent = async (
   });
 
   const event = convertResToEvent(calendarId, res.data);
-  if (!event || !isSameDayEvent(event)) {
+  if (!event) {
     return null;
   }
 
   return event;
 };
 
+/**
+ * Lists google calendar events from the specified calendar with options.
+ * @param calendarId the google calendar id to list events from.
+ * @param options options for filtering listed calendar events.
+ * @returns list of calendar events; or empty list if there are no events.
+ */
 export const listCalendarEvents = async (
   calendarId: string,
   options: ListEventsOptions,
@@ -94,11 +133,12 @@ export const listCalendarEvents = async (
   if (!res.data.items) {
     return [];
   }
+  console.log(res.data.items);
 
   const events = res.data.items
     .map((event) => convertResToEvent(calendarId, event))
     .filter((event) => event !== null)
-    .filter(isSameDayEvent);
+    .flatMap(splitMultiDayEvent);
 
   return events;
 };

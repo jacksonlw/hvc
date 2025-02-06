@@ -4,7 +4,7 @@ export type CalendarName = "events" | "meetings";
 
 export interface CalendarEvent extends calendar_v3.Schema$Event {
   calendarId: string;
-  startDate: string;
-  endDate: string;
+  startDate: string | Date;
+  endDate: string | Date;
   isAllDay: boolean;
 }
