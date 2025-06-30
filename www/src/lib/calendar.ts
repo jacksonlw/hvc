@@ -61,7 +61,11 @@ export const splitMultiDayEvent = (event: CalendarEvent): CalendarEvent[] => {
   const start = dayjs(event.startDate);
   const end = dayjs(event.endDate);
 
-  const n = end.diff(start, "day");
+  let n = end.diff(start, "day");
+  if (event.isAllDay) {
+    n = 0;
+  }
+
   for (let i = 0; i <= n; i++) {
     const date = start.add(i, "day");
     const newEvent: CalendarEvent = {
@@ -133,7 +137,6 @@ export const listCalendarEvents = async (
   if (!res.data.items) {
     return [];
   }
-  console.log(res.data.items);
 
   const events = res.data.items
     .map((event) => convertResToEvent(calendarId, event))
