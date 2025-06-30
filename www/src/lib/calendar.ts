@@ -62,10 +62,10 @@ export const splitMultiDayEvent = (event: CalendarEvent): CalendarEvent[] => {
   const end = dayjs(event.endDate);
 
   let n = end.diff(start, "day");
+  // all day events usually add 1 extra day
   if (event.isAllDay) {
-    n = 0;
+    n--;
   }
-
   for (let i = 0; i <= n; i++) {
     const date = start.add(i, "day");
     const newEvent: CalendarEvent = {
