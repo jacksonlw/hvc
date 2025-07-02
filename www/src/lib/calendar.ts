@@ -59,13 +59,10 @@ export const isSameDayEvent = (event: CalendarEvent): boolean => {
 export const splitMultiDayEvent = (event: CalendarEvent): CalendarEvent[] => {
   const events: CalendarEvent[] = [];
   const start = dayjs(event.startDate);
-  const end = dayjs(event.endDate);
+  let end = dayjs(event.endDate);
+  end = end.subtract(1, "second");
 
-  let n = end.diff(start, "day");
-  // all day events usually add 1 extra day
-  if (event.isAllDay) {
-    n--;
-  }
+  const n = end.diff(start, "day");
   for (let i = 0; i <= n; i++) {
     const date = start.add(i, "day");
     const newEvent: CalendarEvent = {
