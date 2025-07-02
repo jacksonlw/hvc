@@ -59,8 +59,7 @@ export const isSameDayEvent = (event: CalendarEvent): boolean => {
 export const splitMultiDayEvent = (event: CalendarEvent): CalendarEvent[] => {
   const events: CalendarEvent[] = [];
   const start = dayjs(event.startDate);
-  let end = dayjs(event.endDate);
-  end = end.subtract(1, "second");
+  const end = dayjs(event.endDate);
 
   const n = end.diff(start, "day");
   for (let i = 0; i <= n; i++) {
